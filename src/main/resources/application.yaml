@@ -9,10 +9,10 @@ spring:
     prefix: /
     # toolbox-config-location: /WEB-INF/toolbox.xml
   datasource:
-    name: test
+    name: e-commerce
     url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8
     username: root
-    password:
+    password: 111111
     # 使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
