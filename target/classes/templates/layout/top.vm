@@ -1,0 +1,26 @@
+<!-- top navigation -->
+<div class="top_nav">
+    <div class="nav_menu">
+        <nav class="" role="navigation">
+            <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        $!adminDO.nickName
+                        <span class=" fa fa-angle-down"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
+                        <li><a href="javascript:;">帮助</a>
+                        </li>
+                        <li><a href="https://login.alibaba-inc.com/ssoLogout.htm?APP_NAME=competition-admin&BACK_URL=https://102-admin.alibaba-inc.com/competition/index.htm"><i class="fa fa-sign-out pull-right"></i> 登出</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<!-- /top navigation -->

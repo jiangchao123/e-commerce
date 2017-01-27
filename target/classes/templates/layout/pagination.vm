@@ -1,0 +1,165 @@
+<script language="javascript">
+function gotoPage(total,pageIndex){
+    if(pageIndex > total){
+        pageIndex = total;
+    }
+    if(pageIndex < 1){
+        pageIndex = 1;
+    }
+    document.getElementById("page").value = pageIndex;
+    document.getElementById("frm_search").submit();
+}
+
+function gotoPage2(total,tag){
+    var pageIndex = 1;
+    pageIndex = tag.getElementsByTagName("input")[0].value.trim();
+
+    if(pageIndex > total){
+        pageIndex = total;
+    }
+    if(pageIndex < 1){
+        pageIndex = 1;
+    }
+    document.getElementById("page").value = pageIndex;
+    document.getElementById("frm_search").submit();
+
+}
+</script>
+
+#set($current_page_num = $paginator.page)
+#if(!$current_page_num)
+    #set($current_page_num = 0)
+#end
+#set($itemsPerpage = $paginator.itemsPerPage)
+#if(!$itemsPerpage)
+    #set($itemsPerpage = 0)
+#end
+
+#set($total_page_num = $paginator.getPages())
+#if(!$total_page_num)
+    #set($total_page_num = 0)
+#end
+
+#set($beginIndex = $paginator.beginIndex)
+#if(!$beginIndex)
+    #set($beginIndex = 0)
+#end
+
+#set($endIndex = $paginator.endIndex)
+#if(!$endIndex)
+    #set($endIndex = 0)
+#end
+
+#set($items = $paginator.items)
+#if(!$items)
+    #set($items = 0)
+#end
+
+#set($btn_go_status = "")
+#if($items == 0)
+    #set($btn_go_status = "disabled")
+#end
+
+#set($tmp_page_num = 0)
+#set($pre_page = 0)
+#set($next_page = 0)
+
+<nav>
+    <ul class="pagination">
+        <li>
+            #if($current_page_num > 1)
+                <a href="javascript:gotoPage($!total_page_num, 1)" aria-label="Previous">
+                     <span aria-hidden="true">首页</span>
+                </a>
+                ##<span>[<a href="javascript:gotoPage($!total_page_num, 1)">最前页</a>]</span>
+            #else
+                <a href="#" aria-label="Previous">
+                     <span aria-hidden="true">首页</span>
+                </a>
+            #end
+        </li>
+        <li>
+            #if($current_page_num > 1)
+                #set($pre_page = $current_page_num - 1)
+                <a href="javascript:gotoPage($!total_page_num, $pre_page)" aria-label="Previous">
+                     <span aria-hidden="true">&laquo;</span>
+                </a>
+            #else
+                <a href="#" aria-label="Previous">
+                     <span aria-hidden="true">&laquo;</span>
+                </a>
+            #end
+        </li>
+
+        #set($tmp_page_num = $current_page_num - 4)
+            #if($tmp_page_num > 0 && $total_page_num - $current_page_num < 1)
+                <li><a href="javascript:gotoPage($!total_page_num, $!tmp_page_num)">$!tmp_page_num</a></li>
+            #end
+
+            #set($tmp_page_num = $current_page_num - 3)
+            #if($tmp_page_num > 0 && $total_page_num - $current_page_num < 2)
+                <li><a href="javascript:gotoPage($!total_page_num, $!tmp_page_num)">$!tmp_page_num</a></li>
+            #end
+
+            #set($tmp_page_num = $current_page_num - 2)
+            #if($tmp_page_num > 0)
+                <li><a href="javascript:gotoPage($!total_page_num, $!tmp_page_num)">$!tmp_page_num</a></li>
+            #end
+
+            #set($tmp_page_num = $current_page_num - 1)
+            #if($tmp_page_num > 0)
+                <li><a href="javascript:gotoPage($!total_page_num, $!tmp_page_num)">$!tmp_page_num</a></li>
+            #end
+
+            #if($current_page_num > 0)
+                <li class="active"><a href="javascript:gotoPage($!total_page_num, $!tmp_page_num)">$current_page_num</a></li>
+            #end
+
+            #set($tmp_page_num = $current_page_num + 1)
+            #if($tmp_page_num <= $total_page_num)
+                <li><a href="javascript:gotoPage($!total_page_num, $!tmp_page_num)">$!tmp_page_num</a></li>
+            #end
+
+            #set($tmp_page_num = $current_page_num + 2)
+            #if($tmp_page_num <= $total_page_num)
+                <li><a href="javascript:gotoPage($!total_page_num, $!tmp_page_num)">$!tmp_page_num</a></li>
+            #end
+
+            #set($tmp_page_num = $current_page_num + 3)
+            #if($tmp_page_num <= $total_page_num && $current_page_num <= 2)
+                <li><a href="javascript:gotoPage($!total_page_num, $!tmp_page_num)">$!tmp_page_num</a></li>
+            #end
+
+            #set($tmp_page_num = $current_page_num + 4)
+            #if($tmp_page_num <= $total_page_num && $current_page_num <= 1)
+                <li><a href="javascript:gotoPage($!total_page_num, $!tmp_page_num)">$!tmp_page_num</a></li>
+            #end
+
+        <li>
+            #if($current_page_num < $total_page_num)
+                #set($next_page = $current_page_num + 1)
+                <a href="javascript:gotoPage($!total_page_num, $next_page)" aria-label="Previous">
+                     <span aria-hidden="true">&raquo;</span>
+                </a>
+            #else
+                <a href="#" aria-label="Previous">
+                     <span aria-hidden="true">&raquo;</span>
+                </a>
+            #end
+        </li>
+        <li>
+            #if($current_page_num < $total_page_num)
+                <a href="javascript:gotoPage($!total_page_num, $total_page_num)" aria-label="Previous">
+                     <span aria-hidden="true">末页</span>
+                </a>
+            #else
+                <a href="#" aria-label="Previous">
+                     <span aria-hidden="true">末页</span>
+                </a>
+            #end
+        </li>
+
+
+        ##<h4><span class="label label-info">显示记录：$!beginIndex - $!endIndex Of $!items &nbsp;</span></h4>
+    </ul>
+</nav>
