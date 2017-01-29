@@ -1,4 +1,4 @@
-package com/dataobject;
+package com.dataobject;
 
 public class AdminDO {
     /**

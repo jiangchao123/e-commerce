@@ -1,7 +1,7 @@
-package com/mapper;
+package com.mapper;
 
-import com/dataobject.LogDO;
-import com/dataobject.LogDOExample;
+import com.dataobject.LogDO;
+import com.dataobject.LogDOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

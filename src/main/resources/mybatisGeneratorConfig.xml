@@ -23,7 +23,7 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com/dataobject"
+        <javaModelGenerator targetPackage="com.dataobject"
                             targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
@@ -35,7 +35,7 @@
         </sqlMapGenerator>
 
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com/mapper"
+                             targetPackage="com.mapper"
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>

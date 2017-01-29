@@ -1,7 +1,7 @@
-package com/mapper;
+package com.mapper;
 
-import com/dataobject.CategoryDO;
-import com/dataobject.CategoryDOExample;
+import com.dataobject.CategoryDO;
+import com.dataobject.CategoryDOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

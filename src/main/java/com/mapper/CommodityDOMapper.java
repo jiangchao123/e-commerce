@@ -1,7 +1,7 @@
-package com/mapper;
+package com.mapper;
 
-import com/dataobject.CommodityDO;
-import com/dataobject.CommodityDOExample;
+import com.dataobject.CommodityDO;
+import com.dataobject.CommodityDOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

@@ -1,7 +1,7 @@
-package com/mapper;
+package com.mapper;
 
-import com/dataobject.UserDO;
-import com/dataobject.UserDOExample;
+import com.dataobject.UserDO;
+import com.dataobject.UserDOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
