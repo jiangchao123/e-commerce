@@ -9,8 +9,8 @@ spring:
     prefix: /
     # toolbox-config-location: /WEB-INF/toolbox.xml
   datasource:
-    name: e-commerce
-    url: jdbc:mysql://127.0.0.1:3306/e-commerce?useUnicode=true&characterEncoding=UTF-8
+    name: commerce
+    url: jdbc:mysql://127.0.0.1:3306/commerce?useUnicode=true&characterEncoding=UTF-8
     username: root
     password: 111111
     # 使用druid数据源
