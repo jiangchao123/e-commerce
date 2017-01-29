@@ -1,7 +1,7 @@
 package com.mapper;
 
-import com.dataobject.OrderDO;
-import com.dataobject.OrderDOExample;
+import com.entity.OrderDO;
+import com.entity.OrderDOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

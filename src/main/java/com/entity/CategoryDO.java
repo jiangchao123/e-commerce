@@ -1,4 +1,4 @@
-package com.dataobject;
+package com.entity;
 
 public class CategoryDO {
     /**

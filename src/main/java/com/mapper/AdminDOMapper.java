@@ -1,7 +1,7 @@
 package com.mapper;
 
-import com.dataobject.AdminDO;
-import com.dataobject.AdminDOExample;
+import com.entity.AdminDO;
+import com.entity.AdminDOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

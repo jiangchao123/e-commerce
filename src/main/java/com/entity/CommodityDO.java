@@ -1,4 +1,4 @@
-package com.dataobject;
+package com.entity;
 
 import java.util.Date;
 
