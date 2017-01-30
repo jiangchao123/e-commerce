@@ -1,0 +1,125 @@
+<div class="">
+    <div class="clearfix"></div>
+    <div class="row">
+
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>用户管理 <small>用户列表</small>
+                    <a href="/competition/excel.do?name=student" class="btn btn-success" role="button">导出学生Excel表</a></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a href="#"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Settings 1</a>
+                                </li>
+                                <li><a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+					<form class="navbar-form navbar-right" action="$competitionLink.setTarget("competition/student/studentList")" method="post" role="search">
+					  $csrfToken.hiddenField
+					  <input type="hidden" name="action" value="StudentAction"/>
+                      <div class="form-group">
+                        <input type="text" id="name" name="name"  value="" class="form-control" placeholder="姓名/用户名">	
+                      </div>
+                      <input type="submit"  name="event_submit_do_selectLikeName" value="搜索">
+                    </form>
+					
+                    <table id="example" class="table table-striped responsive-utilities jambo_table">
+                        <thead>
+                            <tr class="headings">
+                                <th>
+                                    <input type="checkbox" class="tableflat" id="checkAll" onclick="CheckAll(this.checked)">
+                                </th>
+                                <th>姓名</th>
+                                <th>登录名</th>
+                                <th>手机</th>
+                                <th>邮箱</th>
+                                <th>学校</th>
+                                <th>学历</th>
+                                <th>专业</th>
+                                <th>地址</th>
+                                <th>认证状态</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+							#foreach($student in $pages)
+                            	<tr onmouseenter="this.style.backgroundColor='powderblue'" onmouseleave="this.style.backgroundColor=''">
+                            		<td class="a-center ">
+										<input type="checkbox" class="tableflat" name="table_records">
+                                	</td>
+                                    <td>$!student.name</td>
+                                    <td>$!student.nickName</td>
+                                    <td>$!student.phoneNum</td>
+                                    <td>$!student.mail</td>
+                                    <td>$!student.school</td>
+                                    <td>$!student.education</td>
+                                    <td>$!student.major</td>
+                                    <td>$!student.address</td>
+                                    #if($!student.imgPass==1)
+                                        <td><p class="btn btn-success btn-round btn-sm">身份认证通过</p></td>
+                                    #else
+                                        <td><p class="btn btn-danger btn-round btn-sm">待通过</p></td>
+                                    #end
+                                    <td align="right">
+                                        <a href="studentList.htm?action=StudentAction&event_submit_do_select=any&id=$student.id&_tb_token_= $!csrfToken.ajaxUniqueToken" class="btn btn-primary btn-round btn-sm">查看详情</a>
+                                        <a href="studentList.htm?action=StudentAction&event_submit_do_selectUpdate=any&id=$student.id&_tb_token_= $!csrfToken.ajaxUniqueToken" class="btn btn-info btn-round btn-sm">编辑</a>
+                                        <!--<a href="studentList.htm?action=StudentAction&event_submit_do_delete=any&id=$student.id&_tb_token_= $!csrfToken.ajaxUniqueToken" class="btn btn-danger btn-round btn-sm" onclick="alert('确定删除？')">删除</a>-->
+                                    </td>
+                                </tr>
+                            #end
+                        </tbody>
+                    </table>
+					$!allRow条记录                                                                                            
+
+                    #if($allpage>1)  
+                                                                      
+                                                                       共$!allpage页  
+                    #set($prepage=$page - 1)  
+                    #set($nextpage=$page + 1)  
+                             
+                    <a href="/competition/student/studentList.htm?action=StudentAction&event_submit_do_searchStudentByPage=any&allRow=$!allRow&allpage=$!allpage&page=1&_tb_token_= $!csrfToken.ajaxUniqueToken"><span>第一页</span></a>  
+                        #if($page <= 1 )     
+                             <span>上一页</span>  
+                        #else  
+                             <a href="/competition/student/studentList.htm?action=StudentAction&event_submit_do_searchStudentByPage=any&allRow=$!allRow&allpage=$!allpage&page=$!prepage&_tb_token_= $!csrfToken.ajaxUniqueToken"><span> 上一页 </span></a>  
+                        #end  
+                                                                      
+                                                                       第$!page页  
+                                                                      
+                        #if($page >= $allpage )    
+                            <span>下一页</span>  
+                        #else  
+                            <a href="/competition/student/studentList.htm?action=StudentAction&event_submit_do_searchStudentByPage=any&allRow=$!allRow&allpage=$!allpage&page=$!nextpage&_tb_token_= $!csrfToken.ajaxUniqueToken"><span>下一页</span></a>  
+                        #end  
+                        <a href="/competition/student/studentList.htm?action=StudentAction&event_submit_do_searchStudentByPage=any&allRow=$!allRow&allpage=$!allpage&page=$!allpage&_tb_token_= $!csrfToken.ajaxUniqueToken"><span>最后一页</span></a>  
+                  
+					#end 
+                </div>
+            </div>
+        </div>
+        
+		<br />
+        <br />
+        <br />
+
+    </div>
+</div>
+
+
+
+
+
+
+
