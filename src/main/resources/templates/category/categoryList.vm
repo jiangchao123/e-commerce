@@ -52,7 +52,7 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>店铺管理 <small>店铺列表</small>
+                                    <h2>类目管理 <small>类目列表</small>
                                         <a href="/competition/excel.do?name=student" class="btn btn-success" role="button">导出店铺Excel表</a></h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a href="#"><i class="fa fa-chevron-up"></i></a>
@@ -87,11 +87,9 @@
                                             <th>
                                                 <input type="checkbox" class="tableflat" id="checkAll" onclick="CheckAll(this.checked)">
                                             </th>
-                                            <th>店铺名</th>
-                                            <th>店主名</th>
-                                            <th>地址</th>
-                                            <th>状态</th>
-                                            <th>信誉</th>
+                                            <th>类目名</th>
+                                            <th>父类名</th>
+                                            <th>类目简介</th>
                                             <th>创建时间</th>
                                             <th>&nbsp;</th>
                                         </tr>
@@ -103,14 +101,12 @@
                                                 <td class="a-center ">
                                                     <input type="checkbox" class="tableflat" name="table_records">
                                                 </td>
-                                                <td>$!shop.shopname</td>
-                                                <td>$!shop.userId</td>
-                                                <td>$!shop.address</td>
-                                                <td>$!shop.status</td>
-                                                <td>$!shop.level</td>
-                                                <td>$!shop.createtime</td>
+                                                <td>$!category.categoryName</td>
+                                                <td>$!category.parentCategory</td>
+                                                <td>$!category.description</td>
+                                                <td>$!category.createtime</td>
                                                 <td align="right">
-                                                    <a href="/shop/$shop.id" class="btn btn-primary btn-round btn-sm">查看详情</a>
+                                                    <a href="/category/$category.id" class="btn btn-primary btn-round btn-sm">查看详情</a>
                                                     <a href="studentList.htm?action=StudentAction&event_submit_do_selectUpdate=any&id=$student.id&_tb_token_= $!csrfToken.ajaxUniqueToken" class="btn btn-info btn-round btn-sm">编辑</a>
                                                     <!--<a href="studentList.htm?action=StudentAction&event_submit_do_delete=any&id=$student.id&_tb_token_= $!csrfToken.ajaxUniqueToken" class="btn btn-danger btn-round btn-sm" onclick="alert('确定删除？')">删除</a>-->
                                                 </td>

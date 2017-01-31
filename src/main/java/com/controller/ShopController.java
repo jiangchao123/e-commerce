@@ -2,10 +2,7 @@ package com.controller;
 
 import com.entity.ShopDO;
 import com.entity.ShopDOExample;
-import com.entity.UserDO;
-import com.entity.UserDOExample;
 import com.mapper.ShopDOMapper;
-import com.mapper.UserDOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

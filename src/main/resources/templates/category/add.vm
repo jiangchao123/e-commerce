@@ -79,42 +79,32 @@
                                             <p>$!message</p>
                                         </div>
                                         <div class="form-group">
-                                            <label for="shopname" class="col-sm-2 control-label">店铺名</label>
-                                            <font color="#FF0000">**</font><span id="msg_shopname" style="color:red"></span>
+                                            <label for="category" class="col-sm-2 control-label">类目名</label>
+                                            <font color="#FF0000">**</font><span id="msg_category" style="color:red"></span>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="shopname" name="$group.shopname.key" value="$!group.shopname.value" placeholder="shopname"/>
-                                                #if (!$group.name.valid)
-                                                    <span id="msg" style="color:red">$group.shopname.message</span>
+                                                <input type="text" class="form-control" id="category" name="$group.category.key" value="$!group.category.value" placeholder="category"/>
+                                                #if (!$group.category.valid)
+                                                    <span id="msg" style="color:red">$group.category.message</span>
                                                 #end
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="username" class="col-sm-2 control-label">店主名</label>
-                                            <font color="#FF0000">**</font><span id="msg_username" style="color:red"></span>
+                                            <label for="parentCategory" class="col-sm-2 control-label">父类目名</label>
+                                            <font color="#FF0000">**</font><span id="msg_parentCategory" style="color:red"></span>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="username" name="$group.username.key" value="$!group.username.value" placeholder="username"/>
-                                                #if (!$group.username.valid)
-                                                    <span id="msg" style="color:red">$group.username.message</span>
+                                                <input type="text" class="form-control" id="parentCategory" name="$group.parentCategory.key" value="$!group.parentCategory.value" placeholder="parentCategory"/>
+                                                #if (!$group.parentCategory.valid)
+                                                    <span id="msg" style="color:red">$group.parentCategory.message</span>
                                                 #end
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="description" class="col-sm-2 control-label">店铺简介</label>
+                                            <label for="description" class="col-sm-2 control-label">类目简介</label>
                                             <font color="#FF0000">**</font><span id="msg_description" style="color:red"></span>
                                             <div class="col-sm-8">
                                                 <input type="text" class="form-control" id="description" name="$group.description.key" value="$!group.description.value" placeholder="description"/>
                                                 #if (!$group.description.valid)
                                                     <span id="msg" style="color:red">$group.description.message</span>
-                                                #end
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="address" class="col-sm-2 control-label">店铺地址</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="address" name="$group.address.key" value="$!group.address.value" placeholder="address"/>
-                                                #if (!$group.address.valid)
-                                                    <span id="msg" style="color:red">$group.address.message</span>
                                                 #end
                                             </div>
                                         </div>

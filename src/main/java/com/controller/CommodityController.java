@@ -2,10 +2,7 @@ package com.controller;
 
 import com.entity.CommodityDO;
 import com.entity.CommodityDOExample;
-import com.entity.ShopDO;
-import com.entity.ShopDOExample;
 import com.mapper.CommodityDOMapper;
-import com.mapper.ShopDOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
