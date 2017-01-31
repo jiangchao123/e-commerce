@@ -66,36 +66,28 @@
                                                 <table class="table table-bordered">
                                                     <tr bgcolor="#FFFFFF">
                                                         <td nowrap align="right" width="13%">姓名:</td>
-                                                        <td width="87%">$!student.name</td>
+                                                        <td width="87%">$!user.username</td>
                                                     </tr>
                                                     <tr bgcolor="#FFFFFF">
                                                         <td nowrap align="right" width="13%">登录名:</td>
-                                                        <td width="87%">$!student.nickName</td>
+                                                        <td width="87%">$!user.nickname</td>
                                                     </tr>
 
                                                     <tr bgcolor="#FFFFFF">
                                                         <td nowrap align="right" width="13%">手机号:</td>
-                                                        <td width="87%">$!student.phoneNum</td>
+                                                        <td width="87%">$!user.phone</td>
                                                     </tr>
                                                     <tr bgcolor="#FFFFFF">
                                                         <td nowrap align="right" width="13%">邮箱:</td>
-                                                        <td width="87%">$!student.mail</td>
+                                                        <td width="87%">$!user.email</td>
                                                     </tr>
                                                     <tr bgcolor="#FFFFFF">
                                                         <td nowrap align="right" width="13%">职业:</td>
-                                                        <td width="87%">$!student.job</td>
+                                                        <td width="87%">$!user.job</td>
                                                     </tr>
                                                     <tr bgcolor="#FFFFFF">
                                                         <td nowrap align="right" width="13%">学校:</td>
-                                                        <td width="87%">$!student.school</td>
-                                                    </tr>
-                                                    <tr bgcolor="#FFFFFF">
-                                                        <td nowrap align="right" width="13%">团队:</td>
-                                                        <td width="87%">$!student.teamId</td>
-                                                    </tr>
-                                                    <tr bgcolor="#FFFFFF">
-                                                        <td nowrap align="right" width="13%">毕业时间:</td>
-                                                        <td width="87%">$!graduationDate</td>
+                                                        <td width="87%">$!user.school</td>
                                                     </tr>
                                                     <tr bgcolor="#FFFFFF">
                                                         <td nowrap align="right" width="13%">学历:</td>
@@ -103,40 +95,40 @@
                                                     </tr>
                                                     <tr bgcolor="#FFFFFF">
                                                         <td nowrap align="right" width="13%">专业:</td>
-                                                        <td width="87%">$!student.major</td>
+                                                        <td width="87%">$!user.major</td>
                                                     </tr>
                                                     <tr bgcolor="#FFFFFF">
                                                         <td nowrap align="right" width="13%">地址:</td>
-                                                        <td width="87%">$!student.address</td>
+                                                        <td width="87%">$!user.address</td>
                                                     </tr>
                                                     <tr bgcolor="#FFFFFF">
                                                         <td nowrap align="right" width="13%">身份证号:</td>
-                                                        <td width="87%">$!student.identify</td>
+                                                        <td width="87%">$!user.identify</td>
                                                     </tr>
                                                     <tr bgcolor="#FFFFFF">
                                                         <td nowrap align="right" width="13%">证件类型:</td>
-                                                        <td width="87%">$!student.identifyType    </td>
+                                                        <td width="87%">$!user.identifyType    </td>
                                                     </tr>
                                                     <tr bgcolor="#FFFFFF">
                                                         <td nowrap align="right" width="13%">支付宝账号:</td>
-                                                        <td width="87%">$!student.alipayId</td>
+                                                        <td width="87%">$!user.alipayId</td>
                                                     </tr>
                                                     <tr bgcolor="#FFFFFF">
                                                         <td nowrap align="right" width="13%">支付宝认证:</td>
-                                                        <td width="87%">$!student.alipayPass</td>
+                                                        <td width="87%">$!user.alipayPass</td>
                                                     </tr>
                                                     <tr bgcolor="#FFFFFF">
                                                         <td nowrap align="right" height="120px">头像:</td>
-                                                        <td colspan="1"><img border=0 src="/competition/image.do?name=$!student.password"></td>
+                                                        <td colspan="1"><img border=0 src="/competition/image.do?name=$!user.password"></td>
                                                     </tr>
                                                     <tr bgcolor="#FFFFFF">
                                                         <td nowrap align="right" height="120px">身份证照片:</td>
-                                                        <td colspan="1"><img border=0 src="/competition/image.do?name=$!student.img"></td>
+                                                        <td colspan="1"><img border=0 src="/competition/image.do?name=$!user.img"></td>
                                                     </tr>
                                                     <tr bgcolor="#FFFFFF">
                                                         <td nowrap align="right" width="13%">图片认证:</td>
                                                         <td width="87%">
-                                                            #if($!student.imgPass==1)
+                                                            #if($!user.imgPass==1)
                                                                 认证通过
                                                             #else
                                                                 认证未通过
@@ -145,11 +137,11 @@
                                                     </tr>
                                                     <tr bgcolor="#FFFFFF">
                                                         <td nowrap align="right" height="120px">修改时间:</td>
-                                                        <td colspan="1">$!gmtModified</td>
+                                                        <td colspan="1">$!user.createtime</td>
                                                     </tr>
                                                     <tr bgcolor="#FFFFFF">
                                                         <td nowrap align="right" height="120px">创建时间:</td>
-                                                        <td colspan="1">$!gmtCreate</td>
+                                                        <td colspan="1">$!user.updatetime</td>
                                                     </tr>
 
                                                 </table>
