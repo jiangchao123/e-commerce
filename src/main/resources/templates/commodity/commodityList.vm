@@ -53,7 +53,7 @@
                             <div class="x_panel">
                                 <div class="x_title">
                                     <h2>商品管理 <small>商品列表</small>
-                                        <a href="/competition/excel.do?name=student" class="btn btn-success" role="button">导出店铺Excel表</a></h2>
+                                        <a href="/competition/excel.do?name=student" class="btn btn-success" role="button">导出商品Excel表</a></h2>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a href="#"><i class="fa fa-chevron-up"></i></a>
                                         </li>
