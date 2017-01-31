@@ -1,4 +1,4 @@
-ml
+*.iml
 target
 *.idea
 *.DS_Store
@@ -6,3 +6,5 @@ target
 target/
 .idea/*
 .idea/*.xml
+.idea/workspace.xml
+
