@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.em.OperateEnum;
 import com.entity.UserDO;
 import com.entity.UserDOExample;
 import com.mapper.UserDOMapper;
@@ -37,7 +38,7 @@ public class UserController {
         UserDO user = userDOMapper.selectByPrimaryKey(id);
         modelMap.addAttribute("user", user);
         modelMap.addAttribute("operateEn", "edit/" + id);
-        modelMap.addAttribute("operateCh", "修改");
+        modelMap.addAttribute("operateCh", OperateEnum.UPDATE.code());
         return "/user/add";
     }
 
@@ -66,7 +67,7 @@ public class UserController {
     public String addUser(ModelMap modelMap) {
         modelMap.addAttribute("user", new UserDO());
         modelMap.addAttribute("operateEn", "add");
-        modelMap.addAttribute("operateCh", "新增");
+        modelMap.addAttribute("operateCh", OperateEnum.ADD.code());
         return "/user/add";
     }
 
