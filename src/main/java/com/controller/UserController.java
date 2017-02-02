@@ -32,6 +32,13 @@ public class UserController {
         return "/user/userInfo";
     }
 
+    @RequestMapping("/edit/{id}")
+    public String editUser(@PathVariable("id") Long id, ModelMap modelMap) {
+        UserDO user = userDOMapper.selectByPrimaryKey(id);
+        modelMap.addAttribute("user", user);
+        return "/user/add";
+    }
+
     @RequestMapping("/userList")
     public List<UserDO> viewList(ModelMap modelMap) {
         List<UserDO> users = userDOMapper.selectByExample(new UserDOExample());
