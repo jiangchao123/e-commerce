@@ -36,8 +36,8 @@ public class UserController {
     public String editUser(@PathVariable("id") Long id, ModelMap modelMap) {
         UserDO user = userDOMapper.selectByPrimaryKey(id);
         modelMap.addAttribute("user", user);
-        modelMap.addAttribute("op", "edit/" + id);
-        modelMap.addAttribute("operate", "修改");
+        modelMap.addAttribute("operateEn", "edit/" + id);
+        modelMap.addAttribute("operateCh", "修改");
         return "/user/add";
     }
 
@@ -65,8 +65,8 @@ public class UserController {
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addUser(ModelMap modelMap) {
         modelMap.addAttribute("user", new UserDO());
-        modelMap.addAttribute("op", "add");
-        modelMap.addAttribute("operate", "新增");
+        modelMap.addAttribute("operateEn", "add");
+        modelMap.addAttribute("operateCh", "新增");
         return "/user/add";
     }
 
