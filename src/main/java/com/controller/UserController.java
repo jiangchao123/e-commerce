@@ -36,7 +36,23 @@ public class UserController {
     public String editUser(@PathVariable("id") Long id, ModelMap modelMap) {
         UserDO user = userDOMapper.selectByPrimaryKey(id);
         modelMap.addAttribute("user", user);
+        modelMap.addAttribute("op", "edit/" + id);
+        modelMap.addAttribute("operate", "修改");
         return "/user/add";
+    }
+
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+    public String editUser(@Valid UserDO userDO, BindingResult bindingResult, ModelMap modelMap) {
+        if(bindingResult.hasErrors()){
+            modelMap.addAttribute("bindingResult",bindingResult);
+            return "/user/add";
+        }
+        System.out.println("=====update=====: " + userDO.getId());
+        userDO.setUpdatetime(new Date(System.currentTimeMillis()));
+        userDOMapper.updateByPrimaryKeySelective(userDO);
+        List<UserDO> users = userDOMapper.selectByExample(new UserDOExample());
+        modelMap.addAttribute("users", users);
+        return "redirect:/user/userList";
     }
 
     @RequestMapping("/userList")
@@ -49,6 +65,8 @@ public class UserController {
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addUser(ModelMap modelMap) {
         modelMap.addAttribute("user", new UserDO());
+        modelMap.addAttribute("op", "add");
+        modelMap.addAttribute("operate", "新增");
         return "/user/add";
     }
 
@@ -62,6 +80,6 @@ public class UserController {
         userDOMapper.insert(userDO);
         List<UserDO> users = userDOMapper.selectByExample(new UserDOExample());
         modelMap.addAttribute("users", users);
-        return "/user/userList";
+        return "redirect:/user/userList";
     }
 }
