@@ -1,9 +1,10 @@
 package com.controller;
 
 import com.em.OperateEnum;
+import com.em.UserStatusEnum;
 import com.entity.UserDO;
-import com.entity.UserDOExample;
 import com.mapper.UserDOMapper;
+import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,6 +26,9 @@ public class UserController {
 
     @Autowired
     private UserDOMapper userDOMapper;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("/{id}")
     public String view(@PathVariable("id") Long id, ModelMap modelMap) {
@@ -48,17 +52,16 @@ public class UserController {
             modelMap.addAttribute("bindingResult",bindingResult);
             return "/user/add";
         }
-        System.out.println("=====update=====: " + userDO.getId());
         userDO.setUpdatetime(new Date(System.currentTimeMillis()));
         userDOMapper.updateByPrimaryKeySelective(userDO);
-        List<UserDO> users = userDOMapper.selectByExample(new UserDOExample());
+        List<UserDO> users = userService.searchUsersByPage();
         modelMap.addAttribute("users", users);
         return "redirect:/user/userList";
     }
 
     @RequestMapping("/userList")
     public List<UserDO> viewList(ModelMap modelMap) {
-        List<UserDO> users = userDOMapper.selectByExample(new UserDOExample());
+        List<UserDO> users = userService.searchUsersByPage();
         modelMap.addAttribute("users", users);
         return users;
     }
@@ -78,8 +81,9 @@ public class UserController {
             return "/user/add";
         }
         userDO.setCreatetime(new Date(System.currentTimeMillis()));
+        userDO.setStatus(UserStatusEnum.NORMAL.code());
         userDOMapper.insert(userDO);
-        List<UserDO> users = userDOMapper.selectByExample(new UserDOExample());
+        List<UserDO> users = userService.searchUsersByPage();
         modelMap.addAttribute("users", users);
         return "redirect:/user/userList";
     }
