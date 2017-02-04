@@ -4,12 +4,14 @@ import com.entity.ShopDO;
 import com.entity.ShopDOExample;
 import com.mapper.ShopDOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by jiangchao08 on 17/2/3.
  */
+@Service
 public class ShopService {
     
     @Autowired
