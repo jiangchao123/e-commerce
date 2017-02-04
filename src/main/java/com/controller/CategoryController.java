@@ -1,14 +1,19 @@
 package com.controller;
 
+import com.em.OperateEnum;
 import com.entity.CategoryDO;
 import com.entity.CategoryDOExample;
 import com.mapper.CategoryDOMapper;
+import com.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -20,6 +25,9 @@ public class CategoryController {
 
     @Autowired
     private CategoryDOMapper categoryDOMapper;
+
+    @Autowired
+    private CategoryService categoryService;
 
     @RequestMapping("/{id}")
     public String view(@PathVariable("id") Integer id, ModelMap modelMap) {
@@ -35,12 +43,23 @@ public class CategoryController {
         return categorys;
     }
 
-    @RequestMapping("/add")
-    public List<CategoryDO> addUser(ModelMap modelMap, CategoryDO categoryDO) {
-        if (categoryDO == null || categoryDO.getCategoryName() == null) return null;
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String addCategory(ModelMap modelMap) {
+        modelMap.addAttribute("category", new CategoryDO());
+        modelMap.addAttribute("operateEn", "add");
+        modelMap.addAttribute("operateCh", OperateEnum.ADD.code());
+        return "/category/add";
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String addCategory(@Valid CategoryDO categoryDO, BindingResult bindingResult, ModelMap modelMap) {
+        if(bindingResult.hasErrors()){
+            modelMap.addAttribute("bindingResult",bindingResult);
+            return "/category/add";
+        }
         categoryDOMapper.insert(categoryDO);
-        List<CategoryDO> categorys = categoryDOMapper.selectByExample(new CategoryDOExample());
+        List<CategoryDO> categorys = categoryService.searchCategorysByPage();
         modelMap.addAttribute("categorys", categorys);
-        return categorys;
+        return "redirect:/category/categoryList";
     }
 }

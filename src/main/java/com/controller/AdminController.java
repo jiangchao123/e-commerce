@@ -1,14 +1,19 @@
 package com.controller;
 
+import com.em.OperateEnum;
 import com.entity.AdminDO;
 import com.entity.AdminDOExample;
 import com.mapper.AdminDOMapper;
+import com.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -20,6 +25,9 @@ public class AdminController {
 
     @Autowired
     private AdminDOMapper adminDOMapper;
+
+    @Autowired
+    private AdminService adminService;
 
     @RequestMapping("/{id}")
     public String view(@PathVariable("id") Long id, ModelMap modelMap) {
@@ -35,12 +43,23 @@ public class AdminController {
         return admins;
     }
 
-    @RequestMapping("/add")
-    public List<AdminDO> addUser(ModelMap modelMap, AdminDO adminDO) {
-        if (adminDO == null || adminDO.getAdminname() == null) return null;
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String addAdmin(ModelMap modelMap) {
+        modelMap.addAttribute("admin", new AdminDO());
+        modelMap.addAttribute("operateEn", "add");
+        modelMap.addAttribute("operateCh", OperateEnum.ADD.code());
+        return "/admin/add";
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String addAdmin(@Valid AdminDO adminDO, BindingResult bindingResult, ModelMap modelMap) {
+        if(bindingResult.hasErrors()){
+            modelMap.addAttribute("bindingResult",bindingResult);
+            return "/admin/add";
+        }
         adminDOMapper.insert(adminDO);
-        List<AdminDO> admins = adminDOMapper.selectByExample(new AdminDOExample());
+        List<AdminDO> admins = adminService.searchAdminsByPage();
         modelMap.addAttribute("admins", admins);
-        return admins;
+        return "redirect:/admin/adminList";
     }
 }

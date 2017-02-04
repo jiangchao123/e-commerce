@@ -71,20 +71,15 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <form class="form-horizontal" action="$competitionLink.setTarget("competition/student/insert")" method="post" id="studentForm" enctype="multipart/form-data">
-                                        $csrfToken.hiddenField
-                                        <input type="hidden" name="action" value="StudentAction"/>
-                                        #set ($group = $form.studentInsert.defaultInstance)
-                                        <div class="errorMessage">
-                                            <p>$!message</p>
-                                        </div>
+                                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                                        <input type="hidden" class="form-control" id="id" name="id" value="$!category.id" />
                                         <div class="form-group">
-                                            <label for="category" class="col-sm-2 control-label">类目名</label>
-                                            <font color="#FF0000">**</font><span id="msg_category" style="color:red"></span>
+                                            <label for="categoryName" class="col-sm-2 control-label">类目名</label>
+                                            <font color="#FF0000">**</font><span id="msg_categoryName" style="color:red"></span>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="category" name="$group.category.key" value="$!group.category.value" placeholder="category"/>
-                                                #if (!$group.category.valid)
-                                                    <span id="msg" style="color:red">$group.category.message</span>
+                                                <input type="text" class="form-control" id="categoryName" name="categoryName" value="$!category.categoryName" placeholder="category"/>
+                                                #if ($bindingResult)
+                                                    <span id="msg" style="color:red">$!bindingResult.getFieldError("categoryName").getDefaultMessage()</span>
                                                 #end
                                             </div>
                                         </div>
@@ -92,9 +87,9 @@
                                             <label for="parentCategory" class="col-sm-2 control-label">父类目名</label>
                                             <font color="#FF0000">**</font><span id="msg_parentCategory" style="color:red"></span>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="parentCategory" name="$group.parentCategory.key" value="$!group.parentCategory.value" placeholder="parentCategory"/>
-                                                #if (!$group.parentCategory.valid)
-                                                    <span id="msg" style="color:red">$group.parentCategory.message</span>
+                                                <input type="text" class="form-control" id="parentCategory" name="$parentCategory" value="$!category.parentCategory" placeholder="parentCategory"/>
+                                                #if ($bindingResult)
+                                                    <span id="msg" style="color:red">$!bindingResult.getFieldError("parentCategory").getDefaultMessage()</span>
                                                 #end
                                             </div>
                                         </div>
@@ -102,16 +97,16 @@
                                             <label for="description" class="col-sm-2 control-label">类目简介</label>
                                             <font color="#FF0000">**</font><span id="msg_description" style="color:red"></span>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="description" name="$group.description.key" value="$!group.description.value" placeholder="description"/>
-                                                #if (!$group.description.valid)
-                                                    <span id="msg" style="color:red">$group.description.message</span>
+                                                <input type="text" class="form-control" id="description" name="description" value="$!category.description" placeholder="description"/>
+                                                #if ($bindingResult)
+                                                    <span id="msg" style="color:red">$!bindingResult.getFieldError("description").getDefaultMessage()</span>
                                                 #end
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <div class="col-sm-offset-2 col-sm-10">
-                                                <input type="submit"  name="event_submit_do_insert" value="新增">
+                                                <input type="submit" value="$!operateCh">
                                             </div>
                                         </div>
                                     </form>

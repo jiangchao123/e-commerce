@@ -72,7 +72,7 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <form class="navbar-form navbar-right" action="$competitionLink.setTarget("competition/student/studentList")" method="post" role="search">
+                                    <form class="navbar-form navbar-right" action="" method="post" role="search">
                                         $csrfToken.hiddenField
                                         <input type="hidden" name="action" value="StudentAction"/>
                                         <div class="form-group">
@@ -117,7 +117,7 @@
                                                 <td>$!commodity.createtime</td>
                                                 <td align="right">
                                                     <a href="/commodity/$commodity.id" class="btn btn-primary btn-round btn-sm">查看详情</a>
-                                                    <a href="studentList.htm?action=StudentAction&event_submit_do_selectUpdate=any&id=$student.id&_tb_token_= $!csrfToken.ajaxUniqueToken" class="btn btn-info btn-round btn-sm">编辑</a>
+                                                    <a href="/commodity/edit/$commodity.id" class="btn btn-info btn-round btn-sm">编辑</a>
                                                     <!--<a href="studentList.htm?action=StudentAction&event_submit_do_delete=any&id=$student.id&_tb_token_= $!csrfToken.ajaxUniqueToken" class="btn btn-danger btn-round btn-sm" onclick="alert('确定删除？')">删除</a>-->
                                                 </td>
                                             </tr>

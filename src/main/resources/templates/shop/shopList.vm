@@ -111,7 +111,7 @@
                                                 <td>$!shop.createtime</td>
                                                 <td align="right">
                                                     <a href="/shop/$shop.id" class="btn btn-primary btn-round btn-sm">查看详情</a>
-                                                    <a href="studentList.htm?action=StudentAction&event_submit_do_selectUpdate=any&id=$student.id&_tb_token_= $!csrfToken.ajaxUniqueToken" class="btn btn-info btn-round btn-sm">编辑</a>
+                                                    <a href="/shop/edit/$shop.id" class="btn btn-info btn-round btn-sm">编辑</a>
                                                     <!--<a href="studentList.htm?action=StudentAction&event_submit_do_delete=any&id=$student.id&_tb_token_= $!csrfToken.ajaxUniqueToken" class="btn btn-danger btn-round btn-sm" onclick="alert('确定删除？')">删除</a>-->
                                                 </td>
                                             </tr>
