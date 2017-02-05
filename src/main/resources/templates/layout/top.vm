@@ -15,7 +15,7 @@
                     <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
                         <li><a href="javascript:;">帮助</a>
                         </li>
-                        <li><a href="https://login.alibaba-inc.com/ssoLogout.htm?APP_NAME=competition-admin&BACK_URL=https://102-admin.alibaba-inc.com/competition/index.htm"><i class="fa fa-sign-out pull-right"></i> 登出</a>
+                        <li><a href=""><i class="fa fa-sign-out pull-right"></i> 登出</a>
                         </li>
                     </ul>
                 </li>

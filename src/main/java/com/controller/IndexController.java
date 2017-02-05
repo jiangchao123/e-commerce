@@ -27,20 +27,19 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public String adminLogin(ModelMap modelMap, AdminDO adminDO, HttpSession session) {
-        AdminDO ado=adminService.selectByAdminName(adminDO.getAdminname());//获取管理员各属性
-        if(adminDO.getPassword().equals(ado.getPassword())) {//判断密码是否相同
-            modelMap.addAttribute("admin",adminDO);//如果相同，放入model中
-            session.setAttribute("admin",adminDO);//放入session，用于判断用户登录验证（即判断用户是否登录）
-            return "index";
+    public String hello(ModelMap modelMap, AdminDO adminDO, HttpSession session) {
+        AdminDO admin = adminService.selectByAdminName(adminDO.getAdminname());//获取管理员各属性
+        if(admin != null && adminDO.getPassword().equals(admin.getPassword())) {//判断密码是否相同
+            session.setAttribute("admin",adminDO);//如果相同，放入model中
+            return "redirect:/index";
+        } else {
+            return "/login";
         }
-        else
-            return "login";
     }
 
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String adminLogin(ModelMap modelMap){
-        return "login";
+        return "/login";
     }
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
