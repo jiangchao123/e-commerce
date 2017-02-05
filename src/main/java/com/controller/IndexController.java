@@ -28,17 +28,16 @@ public class IndexController {
     public String hello(ModelMap modelMap, AdminDO adminDO, HttpSession session) {
         AdminDO admin = adminService.selectByAdminName(adminDO.getAdminname());
         if(admin != null && adminDO.getPassword().equals(admin.getPassword())) {
-            modelMap.addAttribute("admin",adminDO);
             session.setAttribute("admin",adminDO);
-            return "index";
+            return "redirect:/index";
         } else {
-            return "login";
+            return "/login";
         }
     }
 
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String adminLogin(ModelMap modelMap){
-        return "login";
+        return "/login";
     }
 
 }
