@@ -9,6 +9,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * Created by jiangchao08 on 16/12/10.
  */
@@ -23,10 +25,11 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping(value = "/index",method = RequestMethod.POST)
-    public String hello(ModelMap modelMap,AdminDO adminDO) {
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    public String hello(ModelMap modelMap, AdminDO adminDO, HttpSession session) {
         if(adminDO.getPassword().equals(adminService.selectByAdminName(adminDO.getAdminname()).getPassword())) {
             modelMap.addAttribute("admin",adminDO);
+            session.setAttribute("admin",adminDO);
             return "index";
         }
         else

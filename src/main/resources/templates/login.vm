@@ -45,7 +45,7 @@
         <div id="wrapper">
             <div id="login" class="animate form">
                 <section class="login_content">
-                    <form action="/index" method="post" enctype="multipart/form-data">
+                    <form action="/login" method="post" enctype="multipart/form-data">
                         <h1>Login Form</h1>
                         <div>
                             <input type="text" id="adminname" name="adminname" class="form-control" placeholder="Username" required="" />
