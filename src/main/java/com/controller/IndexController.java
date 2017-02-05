@@ -2,7 +2,6 @@ package com.controller;
 
 import com.entity.AdminDO;
 import com.service.AdminService;
-import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -27,13 +26,14 @@ public class IndexController {
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String hello(ModelMap modelMap, AdminDO adminDO, HttpSession session) {
-        if(adminDO.getPassword().equals(adminService.selectByAdminName(adminDO.getAdminname()).getPassword())) {
+        AdminDO admin = adminService.selectByAdminName(adminDO.getAdminname());
+        if(admin != null && adminDO.getPassword().equals(admin.getPassword())) {
             modelMap.addAttribute("admin",adminDO);
             session.setAttribute("admin",adminDO);
             return "index";
-        }
-        else
+        } else {
             return "login";
+        }
     }
 
     @RequestMapping(value = "/login",method = RequestMethod.GET)
