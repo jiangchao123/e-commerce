@@ -3,6 +3,7 @@ package com.controller;
 import com.entity.AdminDO;
 import com.service.AdminService;
 import com.service.UserService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -26,10 +27,11 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public String hello(ModelMap modelMap, AdminDO adminDO, HttpSession session) {
-        if(adminDO.getPassword().equals(adminService.selectByAdminName(adminDO.getAdminname()).getPassword())) {
-            modelMap.addAttribute("admin",adminDO);
-            session.setAttribute("admin",adminDO);
+    public String adminLogin(ModelMap modelMap, AdminDO adminDO, HttpSession session) {
+        AdminDO ado=adminService.selectByAdminName(adminDO.getAdminname());//获取管理员各属性
+        if(adminDO.getPassword().equals(ado.getPassword())) {//判断密码是否相同
+            modelMap.addAttribute("admin",adminDO);//如果相同，放入model中
+            session.setAttribute("admin",adminDO);//放入session，用于判断用户登录验证（即判断用户是否登录）
             return "index";
         }
         else
@@ -39,6 +41,23 @@ public class IndexController {
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String adminLogin(ModelMap modelMap){
         return "login";
+    }
+
+    @RequestMapping(value = "/register",method = RequestMethod.POST)
+    public  String adminResgister(AdminDO adminDO,ModelMap modelMap){
+        AdminDO ado=adminService.selectByAdminName(adminDO.getAdminname());//获取管理员各属性
+        if(ado==null)
+        {
+            adminService.insertAdminDo(adminDO);//如果尚未注册则注册
+            modelMap.addAttribute("msg","成功注册");
+            return "login";
+        }
+        else
+        {
+            modelMap.addAttribute("msg","用户名已经存在");
+            return "login";//如果已注册则需重新注册(该步骤不清楚是否需要重新写页面，留待研究）
+        }
+
     }
 
 }

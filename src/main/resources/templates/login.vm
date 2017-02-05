@@ -46,7 +46,7 @@
             <div id="login" class="animate form">
                 <section class="login_content">
                     <form action="/login" method="post" enctype="multipart/form-data">
-                        <h1>Login Form</h1>
+                        <h1>用户登录</h1>
                         <div>
                             <input type="text" id="adminname" name="adminname" class="form-control" placeholder="Username" required="" />
                         </div>
@@ -59,8 +59,8 @@
                         <div class="clearfix"></div>
                         <div class="separator">
 
-                            <p class="change_link">New to site?
-                                <a href="#toregister" class="to_register"> Create Account </a>
+                            <p class="change_link">新用户？
+                                <a href="#toregister" class="to_register">注册用户 </a>
                             </p>
                             <div class="clearfix"></div>
                             <br />
@@ -77,25 +77,27 @@
             </div>
             <div id="register" class="animate form">
                 <section class="login_content">
-                    <form>
-                        <h1>Create Account</h1>
+                    #if($msg)
+                        <script>
+                            alert('$!msg');
+                        </script>
+                    #end
+                    <form action="/register" method="post">
+                        <h1>注册用户</h1>
                         <div>
-                            <input type="text" class="form-control" placeholder="Username" required="" />
+                            <input type="text" id ="adminname" name ="adminname" class="form-control" placeholder="Username" required="" />
                         </div>
                         <div>
-                            <input type="email" class="form-control" placeholder="Email" required="" />
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="" />
                         </div>
                         <div>
-                            <input type="password" class="form-control" placeholder="Password" required="" />
-                        </div>
-                        <div>
-                            <a class="btn btn-default submit" href="index.vm">Submit</a>
+                            <input class="btn btn-default submit"type="submit" value="注册">
                         </div>
                         <div class="clearfix"></div>
                         <div class="separator">
 
-                            <p class="change_link">Already a member ?
-                                <a href="#tologin" class="to_register"> Log in </a>
+                            <p class="change_link">已注册 ?
+                                <a href="#tologin" class="to_register"> 登录</a>
                             </p>
                             <div class="clearfix"></div>
                             <br />
