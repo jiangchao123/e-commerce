@@ -73,7 +73,6 @@
                                 </div>
                                 <div class="x_content">
                                     <form class="navbar-form navbar-right" action="" method="post" role="search">
-                                        $csrfToken.hiddenField
                                         <input type="hidden" name="action" value="StudentAction"/>
                                         <div class="form-group">
                                             <input type="text" id="name" name="name"  value="" class="form-control" placeholder="姓名/用户名">

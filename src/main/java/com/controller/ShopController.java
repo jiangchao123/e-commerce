@@ -3,8 +3,11 @@ package com.controller;
 import com.em.OperateEnum;
 import com.em.ShopStatusEnum;
 import com.entity.ShopDO;
+import com.entity.UserDO;
 import com.mapper.ShopDOMapper;
 import com.service.ShopService;
+import com.service.UserService;
+import com.vo.ShopVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -30,6 +33,9 @@ public class ShopController {
     @Autowired
     private ShopService shopService;
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping("/{id}")
     public String view(@PathVariable("id") Long id, ModelMap modelMap) {
         ShopDO shop = shopDOMapper.selectByPrimaryKey(id);
@@ -38,8 +44,8 @@ public class ShopController {
     }
 
     @RequestMapping("/shopList")
-    public List<ShopDO> viewList(ModelMap modelMap) {
-        List<ShopDO> shops = shopService.searchShopsByPage();
+    public List<ShopVO> viewList(ModelMap modelMap) {
+        List<ShopVO> shops = shopService.searchShopsByPage();
         modelMap.addAttribute("shops", shops);
         return shops;
     }
@@ -47,7 +53,9 @@ public class ShopController {
     @RequestMapping("/edit/{id}")
     public String editShop(@PathVariable("id") Long id, ModelMap modelMap) {
         ShopDO shop = shopDOMapper.selectByPrimaryKey(id);
+        List<UserDO> users = userService.searchAllUsers();
         modelMap.addAttribute("shop", shop);
+        modelMap.addAttribute("users", users);
         modelMap.addAttribute("operateEn", "edit/" + id);
         modelMap.addAttribute("operateCh", OperateEnum.UPDATE.code());
         return "/shop/add";
@@ -61,16 +69,16 @@ public class ShopController {
         }
         shopDO.setUpdatetime(new Date(System.currentTimeMillis()));
         shopDOMapper.updateByPrimaryKeySelective(shopDO);
-        List<ShopDO> shops = shopService.searchShopsByPage();
-        modelMap.addAttribute("shops", shops);
         return "redirect:/shop/shopList";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addShop(ModelMap modelMap) {
+        List<UserDO> users = userService.searchAllUsers();
         modelMap.addAttribute("shop", new ShopDO());
         modelMap.addAttribute("operateEn", "add");
         modelMap.addAttribute("operateCh", OperateEnum.ADD.code());
+        modelMap.addAttribute("users", users);
         return "/shop/add";
     }
 
@@ -83,8 +91,6 @@ public class ShopController {
         shopDO.setCreatetime(new Date(System.currentTimeMillis()));
         shopDO.setStatus(ShopStatusEnum.NORMAL.code());
         shopDOMapper.insert(shopDO);
-        List<ShopDO> shops = shopService.searchShopsByPage();
-        modelMap.addAttribute("shops", shops);
         return "redirect:/shop/shopList";
     }
 }
