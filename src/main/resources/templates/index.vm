@@ -41,8 +41,8 @@
 
     <div class="container body">
         <div class="main_container">
-            #include("./layout/left.vm")
-            #include("./layout/top.vm")
+            #parse("./layout/left.vm")
+            #parse("./layout/top.vm")
             <div class="right_col" role="main">
                 #include("welcom.vm")
             </div>

@@ -23,4 +23,9 @@ public class AdminService {
         List<AdminDO> admins = adminDOMapper.selectByExample(adminDOExample);
         return admins;
     }
+
+    public AdminDO selectByAdminName(String adminName){
+        AdminDO adminDO=adminDOMapper.selectByAdminName(adminName);
+        return adminDO;
+    }
 }

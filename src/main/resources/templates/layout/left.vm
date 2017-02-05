@@ -3,7 +3,7 @@
     <div class="left_col scroll-view">
 
         <div class="navbar nav_title" style="border: 0;">
-            <a href="/index.vm" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
+            <a href="/index.vm" class="site_title"><i class="fa fa-paw"></i> <span>校园电商</span></a>
         </div>
         <div class="clearfix"></div>
 
@@ -14,7 +14,7 @@
             </div>
             <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>Jack Jiang</h2>
+                <h2>$admin.adminname</h2>
             </div>
         </div>
         <!-- /menu prile quick info -->
@@ -25,7 +25,7 @@
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
             <div class="menu_section">
-                <h3>General</h3>
+                <h3>校园电商</h3>
                 <ul class="nav side-menu">
                     <li><a><i class="fa fa-home"></i> 用户管理 <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu" style="display: none">
