@@ -176,6 +176,10 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+
+  <select id="selectByAdminName" resultType="com.entity.AdminDO">
+      select * from admin where adminname =#{adminname}
+  </select>
   <update id="updateByExampleSelective" parameterType="map">
     <!--
       WARNING - @mbggenerated

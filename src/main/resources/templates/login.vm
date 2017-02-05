@@ -45,17 +45,16 @@
         <div id="wrapper">
             <div id="login" class="animate form">
                 <section class="login_content">
-                    <form>
+                    <form action="/index" method="post" enctype="multipart/form-data">
                         <h1>Login Form</h1>
                         <div>
-                            <input type="text" class="form-control" placeholder="Username" required="" />
+                            <input type="text" id="adminname" name="adminname" class="form-control" placeholder="Username" required="" />
                         </div>
                         <div>
-                            <input type="password" class="form-control" placeholder="Password" required="" />
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="" />
                         </div>
                         <div>
-                            <a class="btn btn-default submit" href="index.vm">Log in</a>
-                            <a class="reset_pass" href="#">Lost your password?</a>
+                            <input class="btn btn-default submit"type="submit" value="登录">
                         </div>
                         <div class="clearfix"></div>
                         <div class="separator">
