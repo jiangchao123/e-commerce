@@ -24,9 +24,16 @@ public class AdminService {
         return admins;
     }
 
+    //按管理员名查找对应管理员
     public AdminDO selectByAdminName(String adminName){
-        AdminDO adminDO=adminDOMapper.selectByAdminName(adminName);
-        return adminDO;
+        AdminDOExample adminDOExample = new AdminDOExample();
+        AdminDOExample.Criteria criteria = adminDOExample.createCriteria();
+        criteria.andAdminnameEqualTo(adminName);
+        List<AdminDO> adminDOs = adminDOMapper.selectByExample(adminDOExample);
+        if (adminDOs == null) {
+            return null;
+        }
+        return adminDOs.get(0);
     }
 
     public boolean insertAdminDo(AdminDO adminDO){
