@@ -1,10 +1,12 @@
 package com.controller;
 
+import com.constant.PageSizeConstant;
 import com.em.OperateEnum;
 import com.em.UserStatusEnum;
 import com.entity.UserDO;
 import com.mapper.UserDOMapper;
 import com.service.UserService;
+import com.util.Pager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -37,6 +39,15 @@ public class UserController {
         return "/user/userInfo";
     }
 
+    @RequestMapping("/userList/{page}")
+    public String viewList(@PathVariable("page") Integer page, ModelMap modelMap) {
+        Pager pager = new Pager(page, PageSizeConstant.pageSize);
+        List<UserDO> users = userService.searchUsersByPage(pager);
+        modelMap.addAttribute("users", users);
+        modelMap.addAttribute("pager", pager);
+        return "/user/userList";
+    }
+
     @RequestMapping("/edit/{id}")
     public String editUser(@PathVariable("id") Long id, ModelMap modelMap) {
         UserDO user = userDOMapper.selectByPrimaryKey(id);
@@ -54,16 +65,7 @@ public class UserController {
         }
         userDO.setUpdatetime(new Date(System.currentTimeMillis()));
         userDOMapper.updateByPrimaryKeySelective(userDO);
-        List<UserDO> users = userService.searchUsersByPage();
-        modelMap.addAttribute("users", users);
         return "redirect:/user/userList";
-    }
-
-    @RequestMapping("/userList")
-    public List<UserDO> viewList(ModelMap modelMap) {
-        List<UserDO> users = userService.searchUsersByPage();
-        modelMap.addAttribute("users", users);
-        return users;
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
@@ -83,8 +85,6 @@ public class UserController {
         userDO.setCreatetime(new Date(System.currentTimeMillis()));
         userDO.setStatus(UserStatusEnum.NORMAL.code());
         userDOMapper.insert(userDO);
-        List<UserDO> users = userService.searchUsersByPage();
-        modelMap.addAttribute("users", users);
         return "redirect:/user/userList";
     }
 }

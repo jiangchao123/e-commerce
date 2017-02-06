@@ -4,6 +4,7 @@ import com.em.UserStatusEnum;
 import com.entity.UserDO;
 import com.entity.UserDOExample;
 import com.mapper.UserDOMapper;
+import com.util.Pager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +19,11 @@ public class UserService {
     @Autowired
     private UserDOMapper userDOMapper;
 
-    public List<UserDO> searchUsersByPage() {
+    public List<UserDO> searchUsersByPage(Pager pager) {
         UserDOExample userDOExample = new UserDOExample();
+        pager.setCount(userDOMapper.countByExample(userDOExample));
+        userDOExample.setLimitStart(pager.getBegin());
+        userDOExample.setLimitEnd(pager.getEnd());
         userDOExample.setOrderByClause("createtime DESC");
         List<UserDO> users = userDOMapper.selectByExample(userDOExample);
         return users;

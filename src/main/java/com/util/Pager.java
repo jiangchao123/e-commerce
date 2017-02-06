@@ -24,24 +24,24 @@ public class Pager {
     /**
      * 构造函数
      *
-     * @param begin
+     * @param currentPage
      * @param length
      */
-    public Pager(int begin, int length) {
-        this.begin = begin;
+    public Pager(int currentPage, int length) {
+        this.current = currentPage;
         this.length = length;
+        this.begin = (currentPage - 1) * length;
         this.end = this.begin + this.length;
-        this.current = (int) Math.floor((this.begin * 1.0d) / this.length) + 1;
     }
 
     /**
-     * @param begin
+     * @param currentPage
      * @param length
      * @param count
      */
-    public Pager(int begin, int length, int count) {
-        this(begin, length);
-        this.count = count;
+    public Pager(int currentPage, int length, int count) {
+        this(currentPage, length);
+        this.setCount(count);
     }
 
     /**
