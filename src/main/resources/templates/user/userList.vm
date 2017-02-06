@@ -121,31 +121,6 @@
                                             #end
                                         </tbody>
                                     </table>
-                                    $!allRow条记录
-
-                                    #if($allpage>1)
-
-                                        共$!allpage页
-                                        #set($prepage=$page - 1)
-                                        #set($nextpage=$page + 1)
-
-                                        <a href="/competition/student/studentList.htm?action=StudentAction&event_submit_do_searchStudentByPage=any&allRow=$!allRow&allpage=$!allpage&page=1&_tb_token_= $!csrfToken.ajaxUniqueToken"><span>第一页</span></a>
-                                        #if($page <= 1 )
-                                            <span>上一页</span>
-                                        #else
-                                            <a href="/competition/student/studentList.htm?action=StudentAction&event_submit_do_searchStudentByPage=any&allRow=$!allRow&allpage=$!allpage&page=$!prepage&_tb_token_= $!csrfToken.ajaxUniqueToken"><span> 上一页 </span></a>
-                                        #end
-
-                                        第$!page页
-
-                                        #if($page >= $allpage )
-                                            <span>下一页</span>
-                                        #else
-                                            <a href="/competition/student/studentList.htm?action=StudentAction&event_submit_do_searchStudentByPage=any&allRow=$!allRow&allpage=$!allpage&page=$!nextpage&_tb_token_= $!csrfToken.ajaxUniqueToken"><span>下一页</span></a>
-                                        #end
-                                        <a href="/competition/student/studentList.htm?action=StudentAction&event_submit_do_searchStudentByPage=any&allRow=$!allRow&allpage=$!allpage&page=$!allpage&_tb_token_= $!csrfToken.ajaxUniqueToken"><span>最后一页</span></a>
-
-                                    #end
                                 </div>
                             </div>
                         </div>
