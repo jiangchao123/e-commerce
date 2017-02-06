@@ -106,13 +106,13 @@
                                                     <input type="checkbox" class="tableflat" name="table_records">
                                                 </td>
                                                 <td>$!commodity.commodityName</td>
-                                                <td>$!commodity.shopId</td>
-                                                <td>$!commodity.categoryId</td>
+                                                <td>$!commodity.shopName</td>
+                                                <td>$!commodity.categoryName</td>
                                                 <td>$!commodity.price</td>
                                                 <td>$!commodity.count</td>
                                                 <td>$!commodity.salecount</td>
-                                                <td>$!commodity.salecount</td>
                                                 <td>$!commodity.goodRate</td>
+                                                <td>$!commodity.status</td>
                                                 <td>$!commodity.createtime</td>
                                                 <td align="right">
                                                     <a href="/commodity/$commodity.id" class="btn btn-primary btn-round btn-sm">查看详情</a>

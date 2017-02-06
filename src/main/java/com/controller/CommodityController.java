@@ -4,6 +4,7 @@ import com.em.OperateEnum;
 import com.entity.CommodityDO;
 import com.mapper.CommodityDOMapper;
 import com.service.CommodityService;
+import com.vo.CommodityVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -53,14 +54,12 @@ public class CommodityController {
         }
         commodityDO.setUpdatetime(new Date(System.currentTimeMillis()));
         commodityDOMapper.updateByPrimaryKeySelective(commodityDO);
-        List<CommodityDO> commoditys = commodityService.searchCommoditysByPage();
-        modelMap.addAttribute("commoditys", commoditys);
         return "redirect:/commodity/commodityList";
     }
 
     @RequestMapping("/commodityList")
-    public List<CommodityDO> viewList(ModelMap modelMap) {
-        List<CommodityDO> commoditys = commodityService.searchCommoditysByPage();
+    public List<CommodityVO> viewList(ModelMap modelMap) {
+        List<CommodityVO> commoditys = commodityService.searchCommoditysByPage();
         modelMap.addAttribute("commoditys", commoditys);
         return commoditys;
     }
@@ -81,8 +80,6 @@ public class CommodityController {
         }
         commodityDO.setCreatetime(new Date(System.currentTimeMillis()));
         commodityDOMapper.insert(commodityDO);
-        List<CommodityDO> commoditys = commodityService.searchCommoditysByPage();
-        modelMap.addAttribute("commoditys", commoditys);
         return "redirect:/commodity/commodityList";
     }
 }

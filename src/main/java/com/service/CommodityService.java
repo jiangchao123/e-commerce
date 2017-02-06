@@ -1,11 +1,18 @@
 package com.service;
 
+import com.convert.CommodityConverter;
+import com.entity.CategoryDO;
 import com.entity.CommodityDO;
 import com.entity.CommodityDOExample;
+import com.entity.ShopDO;
+import com.mapper.CategoryDOMapper;
 import com.mapper.CommodityDOMapper;
+import com.mapper.ShopDOMapper;
+import com.vo.CommodityVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,10 +24,25 @@ public class CommodityService {
     @Autowired
     private CommodityDOMapper commodityDOMapper;
 
-    public List<CommodityDO> searchCommoditysByPage() {
+    @Autowired
+    private ShopDOMapper shopDOMapper;
+
+    @Autowired
+    private CategoryDOMapper categoryDOMapper;
+
+    public List<CommodityVO> searchCommoditysByPage() {
         CommodityDOExample commodityDOExample = new CommodityDOExample();
         commodityDOExample.setOrderByClause("createtime DESC");
-        List<CommodityDO> commoditys = commodityDOMapper.selectByExample(commodityDOExample);
-        return commoditys;
+        List<CommodityDO> commodityDOs = commodityDOMapper.selectByExample(commodityDOExample);
+        List<CommodityVO> commodityVOs = new ArrayList<>();
+        if (commodityDOs != null) {
+            for (CommodityDO commodityDO : commodityDOs) {
+                ShopDO shopDO = shopDOMapper.selectByPrimaryKey(commodityDO.getShopId());
+                CategoryDO categoryDO = categoryDOMapper.selectByPrimaryKey(commodityDO.getCategoryId());
+                CommodityVO commodityVO = CommodityConverter.convert(commodityDO, shopDO, categoryDO);
+                commodityVOs.add(commodityVO);
+            }
+        }
+        return commodityVOs;
     }
 }
