@@ -61,7 +61,23 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a><i class="fa fa-bar-chart-o"></i> 管理员管理 <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-bar-chart-o"></i> 订单管理 <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu" style="display: none">
+                            <li><a href="/order/orderList.vm">订单查询</a>
+                            </li>
+                            <li><a href="/order/orderList.vm">自营订单查询</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a><i class="fa fa-table"></i> 日志管理 <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu" style="display: none">
+                            <li><a href="/log/logList.vm">日志查询</a>
+                            </li>
+                            <li><a href="/log/logList.vm">个人日志查询</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a><i class="fa fa-home"></i> 管理员管理 <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu" style="display: none">
                             <li><a href="/admin/adminList.vm">管理员查询</a>
                             </li>

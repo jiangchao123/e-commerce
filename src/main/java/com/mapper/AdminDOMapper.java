@@ -2,9 +2,8 @@ package com.mapper;
 
 import com.entity.AdminDO;
 import com.entity.AdminDOExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface AdminDOMapper {
     /**

@@ -52,7 +52,7 @@
             <generatedKey column="id" sqlStatement="mysql" identity="true" />
         </table>
 
-        <table tableName="order" domainObjectName="OrderDO">
+        <table tableName="goods_order" domainObjectName="OrderDO">
             <generatedKey column="id" sqlStatement="mysql" identity="true" />
         </table>
 
