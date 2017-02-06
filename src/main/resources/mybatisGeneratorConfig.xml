@@ -5,10 +5,10 @@
 
 <generatorConfiguration>
 	<classPathEntry location="src/main/mysql-connector-java-5.1.34.jar" />
-
     <context id="commerce" targetRuntime="MyBatis3">
         <property name="suppressAllComments" value="true" />
         <property name="useActualColumnNames" value="false"/>
+        <plugin type="com.plugin.PaginationPlugin"> </plugin>
         <commentGenerator>
             <!-- 指定在生成的注释是否将包括时间戳，默认是false -->
             <property name="suppressDate" value="true" />
