@@ -28,4 +28,9 @@ public class AdminService {
         AdminDO adminDO=adminDOMapper.selectByAdminName(adminName);
         return adminDO;
     }
+
+    public boolean insertAdminDo(AdminDO adminDO){
+        adminDOMapper.insert(adminDO);
+        return true;
+    }
 }
