@@ -8,6 +8,7 @@ import com.entity.ShopDO;
 import com.mapper.CategoryDOMapper;
 import com.mapper.CommodityDOMapper;
 import com.mapper.ShopDOMapper;
+import com.util.Pager;
 import com.vo.CommodityVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,8 +31,11 @@ public class CommodityService {
     @Autowired
     private CategoryDOMapper categoryDOMapper;
 
-    public List<CommodityVO> searchCommoditysByPage() {
+    public List<CommodityVO> searchCommoditysByPage(Pager pager) {
         CommodityDOExample commodityDOExample = new CommodityDOExample();
+        pager.setCount(commodityDOMapper.countByExample(commodityDOExample));
+        commodityDOExample.setLimitStart(pager.getBegin());
+        commodityDOExample.setLimitEnd(pager.getLength());
         commodityDOExample.setOrderByClause("createtime DESC");
         List<CommodityDO> commodityDOs = commodityDOMapper.selectByExample(commodityDOExample);
         List<CommodityVO> commodityVOs = new ArrayList<>();

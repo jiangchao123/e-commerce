@@ -1,9 +1,11 @@
 package com.controller;
 
+import com.constant.PageSizeConstant;
 import com.em.OperateEnum;
 import com.entity.CommodityDO;
 import com.mapper.CommodityDOMapper;
 import com.service.CommodityService;
+import com.util.Pager;
 import com.vo.CommodityVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,6 +39,15 @@ public class CommodityController {
         return "/commodity/commodityInfo";
     }
 
+    @RequestMapping("/commodityList/{page}")
+    public String viewList(@PathVariable("page") Integer page, ModelMap modelMap) {
+        Pager pager = new Pager(page, PageSizeConstant.pageSize);
+        List<CommodityVO> commoditys = commodityService.searchCommoditysByPage(pager);
+        modelMap.addAttribute("commoditys", commoditys);
+        modelMap.addAttribute("pager", pager);
+        return "/commodity/commodityList";
+    }
+
     @RequestMapping("/edit/{id}")
     public String editCommodity(@PathVariable("id") Long id, ModelMap modelMap) {
         CommodityDO commodity = commodityDOMapper.selectByPrimaryKey(id);
@@ -55,13 +66,6 @@ public class CommodityController {
         commodityDO.setUpdatetime(new Date(System.currentTimeMillis()));
         commodityDOMapper.updateByPrimaryKeySelective(commodityDO);
         return "redirect:/commodity/commodityList";
-    }
-
-    @RequestMapping("/commodityList")
-    public List<CommodityVO> viewList(ModelMap modelMap) {
-        List<CommodityVO> commoditys = commodityService.searchCommoditysByPage();
-        modelMap.addAttribute("commoditys", commoditys);
-        return commoditys;
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)

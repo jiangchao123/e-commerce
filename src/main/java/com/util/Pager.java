@@ -31,7 +31,7 @@ public class Pager {
         this.current = currentPage;
         this.length = length;
         this.begin = (currentPage - 1) * length;
-        this.end = this.begin + this.length;
+        this.end = this.begin + this.length - 1;
     }
 
     /**

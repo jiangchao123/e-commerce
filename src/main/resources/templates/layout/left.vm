@@ -31,7 +31,7 @@
                         <ul class="nav child_menu" style="display: none">
                             <li><a href="/user/add.vm">添加用户</a>
                             </li>
-                            <li><a href="/user/userList.vm">查询用户</a>
+                            <li><a href="/user/userList/1.vm">查询用户</a>
                             </li>
                         </ul>
                     </li>
@@ -39,13 +39,13 @@
                         <ul class="nav child_menu" style="display: none">
                             <li><a href="/shop/add.vm">添加店铺</a>
                             </li>
-                            <li><a href="/shop/shopList.vm">店铺查询</a>
+                            <li><a href="/shop/shopList/1.vm">店铺查询</a>
                             </li>
                         </ul>
                     </li>
                     <li><a><i class="fa fa-desktop"></i> 商品管理 <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu" style="display: none">
-                            <li><a href="/commodity/commodityList.vm">商品查询</a>
+                            <li><a href="/commodity/commodityList/1.vm">商品查询</a>
                             </li>
                             <li><a href="general_elements.vm">敏感商品审核</a>
                             </li>
@@ -63,9 +63,9 @@
                     </li>
                     <li><a><i class="fa fa-bar-chart-o"></i> 订单管理 <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu" style="display: none">
-                            <li><a href="/order/orderList.vm">订单查询</a>
+                            <li><a href="/order/orderList/1.vm">订单查询</a>
                             </li>
-                            <li><a href="/order/orderList.vm">自营订单查询</a>
+                            <li><a href="/order/orderList/1.vm">自营订单查询</a>
                             </li>
                         </ul>
                     </li>
@@ -79,7 +79,7 @@
                     </li>
                     <li><a><i class="fa fa-home"></i> 管理员管理 <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu" style="display: none">
-                            <li><a href="/admin/adminList.vm">管理员查询</a>
+                            <li><a href="/admin/adminList/1.vm">管理员查询</a>
                             </li>
                             <li><a href="/admin/add.vm">新增子管理员</a>
                             </li>

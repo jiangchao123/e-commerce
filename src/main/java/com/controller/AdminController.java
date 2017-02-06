@@ -1,10 +1,11 @@
 package com.controller;
 
+import com.constant.PageSizeConstant;
 import com.em.OperateEnum;
 import com.entity.AdminDO;
-import com.entity.AdminDOExample;
 import com.mapper.AdminDOMapper;
 import com.service.AdminService;
+import com.util.Pager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -36,11 +37,13 @@ public class AdminController {
         return "/admin/adminInfo";
     }
 
-    @RequestMapping("/adminList")
-    public List<AdminDO> viewList(ModelMap modelMap) {
-        List<AdminDO> admins = adminDOMapper.selectByExample(new AdminDOExample());
+    @RequestMapping("/adminList/{page}")
+    public String viewList(@PathVariable("page") Integer page, ModelMap modelMap) {
+        Pager pager = new Pager(page, PageSizeConstant.pageSize);
+        List<AdminDO> admins = adminService.searchAdminsByPage(pager);
         modelMap.addAttribute("admins", admins);
-        return admins;
+        modelMap.addAttribute("pager", pager);
+        return "/admin/adminList";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
@@ -58,8 +61,6 @@ public class AdminController {
             return "/admin/add";
         }
         adminDOMapper.insert(adminDO);
-        List<AdminDO> admins = adminService.searchAdminsByPage();
-        modelMap.addAttribute("admins", admins);
         return "redirect:/admin/adminList";
     }
 }

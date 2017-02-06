@@ -23,7 +23,7 @@ public class UserService {
         UserDOExample userDOExample = new UserDOExample();
         pager.setCount(userDOMapper.countByExample(userDOExample));
         userDOExample.setLimitStart(pager.getBegin());
-        userDOExample.setLimitEnd(pager.getEnd());
+        userDOExample.setLimitEnd(pager.getLength());
         userDOExample.setOrderByClause("createtime DESC");
         List<UserDO> users = userDOMapper.selectByExample(userDOExample);
         return users;

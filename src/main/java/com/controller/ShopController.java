@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.constant.PageSizeConstant;
 import com.em.OperateEnum;
 import com.em.ShopStatusEnum;
 import com.entity.ShopDO;
@@ -7,6 +8,7 @@ import com.entity.UserDO;
 import com.mapper.ShopDOMapper;
 import com.service.ShopService;
 import com.service.UserService;
+import com.util.Pager;
 import com.vo.ShopVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,11 +45,13 @@ public class ShopController {
         return "/shop/shopInfo";
     }
 
-    @RequestMapping("/shopList")
-    public List<ShopVO> viewList(ModelMap modelMap) {
-        List<ShopVO> shops = shopService.searchShopsByPage();
+    @RequestMapping("/shopList/{page}")
+    public String viewList(@PathVariable("page") Integer page, ModelMap modelMap) {
+        Pager pager = new Pager(page, PageSizeConstant.pageSize);
+        List<ShopVO> shops = shopService.searchShopsByPage(pager);
         modelMap.addAttribute("shops", shops);
-        return shops;
+        modelMap.addAttribute("pager", pager);
+        return "/shop/shopList";
     }
 
     @RequestMapping("/edit/{id}")

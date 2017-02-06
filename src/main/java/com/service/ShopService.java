@@ -6,6 +6,7 @@ import com.entity.ShopDOExample;
 import com.entity.UserDO;
 import com.mapper.ShopDOMapper;
 import com.mapper.UserDOMapper;
+import com.util.Pager;
 import com.vo.ShopVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,8 +26,11 @@ public class ShopService {
     @Autowired
     private UserDOMapper userDOMapper;
 
-    public List<ShopVO> searchShopsByPage() {
+    public List<ShopVO> searchShopsByPage(Pager pager) {
         ShopDOExample shopDOExample = new ShopDOExample();
+        pager.setCount(shopDOMapper.countByExample(shopDOExample));
+        shopDOExample.setLimitStart(pager.getBegin());
+        shopDOExample.setLimitEnd(pager.getLength());
         shopDOExample.setOrderByClause("createtime DESC");
         List<ShopDO> shopDOS = shopDOMapper.selectByExample(shopDOExample);
         List<ShopVO> shopVOS = new ArrayList<>();

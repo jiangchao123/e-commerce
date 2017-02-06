@@ -1,9 +1,11 @@
 package com.controller;
 
+import com.constant.PageSizeConstant;
 import com.em.OperateEnum;
 import com.entity.OrderDO;
 import com.mapper.OrderDOMapper;
 import com.service.OrderService;
+import com.util.Pager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -36,6 +38,15 @@ public class OrderController {
         return "/order/orderInfo";
     }
 
+    @RequestMapping("/orderList/{page}")
+    public String viewList(@PathVariable("page") Integer page, ModelMap modelMap) {
+        Pager pager = new Pager(page, PageSizeConstant.pageSize);
+        List<OrderDO> orders = orderService.searchOrdersByPage(pager);
+        modelMap.addAttribute("orders", orders);
+        modelMap.addAttribute("pager", pager);
+        return "/order/orderList";
+    }
+
     @RequestMapping("/edit/{id}")
     public String editOrder(@PathVariable("id") Long id, ModelMap modelMap) {
         OrderDO order = orderDOMapper.selectByPrimaryKey(id);
@@ -53,16 +64,7 @@ public class OrderController {
         }
         orderDO.setUpdatetime(new Date(System.currentTimeMillis()));
         orderDOMapper.updateByPrimaryKeySelective(orderDO);
-        List<OrderDO> orders = orderService.searchOrdersByPage();
-        modelMap.addAttribute("orders", orders);
         return "redirect:/order/orderList";
-    }
-
-    @RequestMapping("/orderList")
-    public List<OrderDO> viewList(ModelMap modelMap) {
-        List<OrderDO> orders = orderService.searchOrdersByPage();
-        modelMap.addAttribute("orders", orders);
-        return orders;
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
@@ -81,8 +83,6 @@ public class OrderController {
         }
         orderDO.setCreatetime(new Date(System.currentTimeMillis()));
         orderDOMapper.insert(orderDO);
-        List<OrderDO> orders = orderService.searchOrdersByPage();
-        modelMap.addAttribute("orders", orders);
         return "redirect:/order/orderList";
     }
 }
