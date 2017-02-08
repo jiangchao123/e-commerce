@@ -65,7 +65,7 @@ public class UserController {
         }
         userDO.setUpdatetime(new Date(System.currentTimeMillis()));
         userDOMapper.updateByPrimaryKeySelective(userDO);
-        return "redirect:/user/userList";
+        return "redirect:/user/userList/1.vm";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
@@ -85,6 +85,6 @@ public class UserController {
         userDO.setCreatetime(new Date(System.currentTimeMillis()));
         userDO.setStatus(UserStatusEnum.NORMAL.code());
         userDOMapper.insert(userDO);
-        return "redirect:/user/userList";
+        return "redirect:/user/userList/1.vm";
     }
 }

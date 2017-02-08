@@ -64,7 +64,7 @@ public class OrderController {
         }
         orderDO.setUpdatetime(new Date(System.currentTimeMillis()));
         orderDOMapper.updateByPrimaryKeySelective(orderDO);
-        return "redirect:/order/orderList";
+        return "redirect:/order/orderList/1.vm";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
@@ -83,6 +83,6 @@ public class OrderController {
         }
         orderDO.setCreatetime(new Date(System.currentTimeMillis()));
         orderDOMapper.insert(orderDO);
-        return "redirect:/order/orderList";
+        return "redirect:/order/orderList/1.vm";
     }
 }

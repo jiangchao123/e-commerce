@@ -61,6 +61,6 @@ public class AdminController {
             return "/admin/add";
         }
         adminDOMapper.insert(adminDO);
-        return "redirect:/admin/adminList";
+        return "redirect:/admin/adminList/1.vm";
     }
 }

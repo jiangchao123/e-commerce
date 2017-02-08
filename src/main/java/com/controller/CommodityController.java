@@ -65,7 +65,7 @@ public class CommodityController {
         }
         commodityDO.setUpdatetime(new Date(System.currentTimeMillis()));
         commodityDOMapper.updateByPrimaryKeySelective(commodityDO);
-        return "redirect:/commodity/commodityList";
+        return "redirect:/commodity/commodityList/1.vm";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
@@ -84,6 +84,6 @@ public class CommodityController {
         }
         commodityDO.setCreatetime(new Date(System.currentTimeMillis()));
         commodityDOMapper.insert(commodityDO);
-        return "redirect:/commodity/commodityList";
+        return "redirect:/commodity/commodityList/1.vm";
     }
 }

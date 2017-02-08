@@ -73,7 +73,7 @@ public class ShopController {
         }
         shopDO.setUpdatetime(new Date(System.currentTimeMillis()));
         shopDOMapper.updateByPrimaryKeySelective(shopDO);
-        return "redirect:/shop/shopList";
+        return "redirect:/shop/shopList/1.vm";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
@@ -95,6 +95,6 @@ public class ShopController {
         shopDO.setCreatetime(new Date(System.currentTimeMillis()));
         shopDO.setStatus(ShopStatusEnum.NORMAL.code());
         shopDOMapper.insert(shopDO);
-        return "redirect:/shop/shopList";
+        return "redirect:/shop/shopList/1.vm";
     }
 }
