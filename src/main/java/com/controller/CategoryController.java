@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -57,6 +58,7 @@ public class CategoryController {
             modelMap.addAttribute("bindingResult",bindingResult);
             return "/category/add";
         }
+        categoryDO.setCreatetime(new Date(System.currentTimeMillis()));
         categoryDOMapper.insert(categoryDO);
         List<CategoryDO> categorys = categoryService.searchCategorysByPage();
         modelMap.addAttribute("categorys", categorys);

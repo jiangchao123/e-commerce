@@ -87,7 +87,7 @@
                                             <label for="parentCategory" class="col-sm-2 control-label">父类目名</label>
                                             <font color="#FF0000">**</font><span id="msg_parentCategory" style="color:red"></span>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="parentCategory" name="$parentCategory" value="$!category.parentCategory" placeholder="parentCategory"/>
+                                                <input type="text" class="form-control" id="parentCategory" name="parentCategory" value="$!category.parentCategory" placeholder="parentCategory"/>
                                                 #if ($bindingResult)
                                                     <span id="msg" style="color:red">$!bindingResult.getFieldError("parentCategory").getDefaultMessage()</span>
                                                 #end

@@ -34,7 +34,8 @@ public class AdminService {
         AdminDOExample.Criteria criteria = adminDOExample.createCriteria();
         criteria.andAdminnameEqualTo(adminName);
         List<AdminDO> adminDOs = adminDOMapper.selectByExample(adminDOExample);
-        if (adminDOs == null) {
+        System.out.print("大小="+adminDOs.size());
+        if (adminDOs.size() == 0) {
             return null;
         }
         return adminDOs.get(0);

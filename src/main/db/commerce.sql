@@ -25,6 +25,8 @@ CREATE TABLE `admin` (
   `id` bigint(11) NOT NULL AUTO_INCREMENT,
   `adminname` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
+  `createtime` datetime NOT NULL,
+  `updatetime` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -36,6 +38,8 @@ CREATE TABLE `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(50) NOT NULL,
   `parent_category` int(11) DEFAULT NULL,
+  `createtime` datetime NOT NULL,
+  `updatetime` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -78,8 +82,8 @@ CREATE TABLE `log` (
 -- ----------------------------
 --  Table structure for `order`
 -- ----------------------------
-DROP TABLE IF EXISTS `order`;
-CREATE TABLE `order` (
+DROP TABLE IF EXISTS `goods_order`;
+CREATE TABLE `goods_order` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) NOT NULL,
   `commodity_id` bigint(20) NOT NULL,

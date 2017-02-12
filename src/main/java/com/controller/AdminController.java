@@ -37,6 +37,7 @@ public class AdminController {
         return "/admin/adminInfo";
     }
 
+
     @RequestMapping("/adminList/{page}")
     public String viewList(@PathVariable("page") Integer page, ModelMap modelMap) {
         Pager pager = new Pager(page, PageSizeConstant.pageSize);
@@ -63,4 +64,5 @@ public class AdminController {
         adminDOMapper.insert(adminDO);
         return "redirect:/admin/adminList/1.vm";
     }
+
 }

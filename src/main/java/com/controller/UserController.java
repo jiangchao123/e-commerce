@@ -14,10 +14,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by jiangchao08 on 16/12/5.
@@ -87,4 +90,5 @@ public class UserController {
         userDOMapper.insert(userDO);
         return "redirect:/user/userList/1.vm";
     }
+
 }

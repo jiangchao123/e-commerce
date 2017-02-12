@@ -7,10 +7,13 @@ import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 
 /**
  * Created by jiangchao08 on 16/12/10.
@@ -47,6 +50,7 @@ public class IndexController {
         AdminDO ado=adminService.selectByAdminName(adminDO.getAdminname());//获取管理员各属性
         if(ado==null)
         {
+            adminDO.setCreatetime(new Date(System.currentTimeMillis()));
             adminService.insertAdminDo(adminDO);//如果尚未注册则注册
             modelMap.addAttribute("msg","成功注册");
             return "login";
@@ -58,5 +62,9 @@ public class IndexController {
         }
 
     }
+    //****************
+    //接口编写
+    //****************
+
 
 }

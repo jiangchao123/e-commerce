@@ -76,12 +76,15 @@ public class CommodityController {
         return "/commodity/add";
     }
 
+
+    //目前这一块有问题了
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addCommodity(@Valid CommodityDO commodityDO, BindingResult bindingResult, ModelMap modelMap) {
         if(bindingResult.hasErrors()){
             modelMap.addAttribute("bindingResult",bindingResult);
             return "/commodity/add";
         }
+        commodityDO.setShopId(5L);
         commodityDO.setCreatetime(new Date(System.currentTimeMillis()));
         commodityDOMapper.insert(commodityDO);
         return "redirect:/commodity/commodityList/1.vm";
