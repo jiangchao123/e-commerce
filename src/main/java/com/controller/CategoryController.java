@@ -1,10 +1,12 @@
 package com.controller;
 
+import com.constant.PageSizeConstant;
 import com.em.OperateEnum;
 import com.entity.CategoryDO;
 import com.entity.CategoryDOExample;
 import com.mapper.CategoryDOMapper;
 import com.service.CategoryService;
+import com.util.Pager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -37,11 +39,36 @@ public class CategoryController {
         return "/category/categoryInfo";
     }
 
-    @RequestMapping("/categoryList")
-    public List<CategoryDO> viewList(ModelMap modelMap) {
-        List<CategoryDO> categorys = categoryDOMapper.selectByExample(new CategoryDOExample());
+
+
+    @RequestMapping("/edit/{id}")
+    public String editCategory(@PathVariable("id") int id, ModelMap modelMap) {
+        CategoryDO categoryDO = categoryDOMapper.selectByPrimaryKey(id);
+        modelMap.addAttribute("category",categoryDO);
+        modelMap.addAttribute("operateEn", "edit/" + id);
+        modelMap.addAttribute("operateCh", OperateEnum.UPDATE.code());
+        return "/category/add";
+    }
+
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+    public String editUser(@Valid CategoryDO categoryDO,BindingResult bindingResult, ModelMap modelMap) {
+        if (bindingResult.hasErrors()) {
+            modelMap.addAttribute("bindingResult", bindingResult);
+            return "/category/add";
+        }
+        categoryDO.setCreatetime(new Date(System.currentTimeMillis()));
+        categoryDOMapper.updateByPrimaryKeySelective(categoryDO);
+        return "redirect:/category/categoryList/1";
+    }
+
+
+    @RequestMapping("/categoryList/{page}")
+    public String viewList(@PathVariable("page") Integer page,ModelMap modelMap) {
+        Pager pager = new Pager(page, PageSizeConstant.pageSize);
+        List<CategoryDO> categorys = categoryService.searchCategorysByPage(pager);
         modelMap.addAttribute("categorys", categorys);
-        return categorys;
+        modelMap.addAttribute("pager",pager);
+        return "/category/categoryList";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
@@ -60,8 +87,6 @@ public class CategoryController {
         }
         categoryDO.setCreatetime(new Date(System.currentTimeMillis()));
         categoryDOMapper.insert(categoryDO);
-        List<CategoryDO> categorys = categoryService.searchCategorysByPage();
-        modelMap.addAttribute("categorys", categorys);
-        return "redirect:/category/categoryList";
+        return "redirect:/category/categoryList/1";
     }
 }

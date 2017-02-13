@@ -57,7 +57,7 @@
                         <ul class="nav child_menu" style="display: none">
                             <li><a href="/category/add.vm">添加类目</a>
                             </li>
-                            <li><a href="/category/categoryList.vm">类目查询</a>
+                            <li><a href="/category/categoryList/1.vm">类目查询</a>
                             </li>
                         </ul>
                     </li>
