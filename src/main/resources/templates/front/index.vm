@@ -33,18 +33,16 @@
                         <li class="active"><a href="index.html">栏目1</a></li>
 
                         <li><a href="checkout.html">Ch <span class="badge badge-important">3</span></a></li>
-                        <li><a href="new.html">Order Placement</a></li>
-                        <li><a href="status.html">Order Status</a></li>
-
+                        <li><a href="/front/new">添加商品</a></li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                Categories
+                                类别
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="nav-header">Men</li>
-                                <li><a href="list.html">Clothes</a></li>
-                                <li><a href="list.html">Shoes</a></li>
+                                <li><a href="/front/list">Clothes</a></li>
+                                <li><a href="/front/list">Shoes</a></li>
                                 <li><a href="list.html">Watches</a></li>
                                 <li><a href="list.html">Jewlery</a></li>
                                 <li class="divider"></li>
@@ -62,8 +60,7 @@
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="aboutus.html">About Us</a></li>
-                                <li><a href="contactus.html">Contact Us</a></li>
+                                <li><a href="/front/contactus">Contact Us</a></li>
                             </ul>
                         </li>
 
@@ -77,7 +74,7 @@
     <div class="jumbotron">
         <h1>Latest News</h1>
         <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <a class="btn btn-large btn-success" href="list.html">Show Products</a>
+        <a class="btn btn-large btn-success" href="/front/list">Show Products</a>
     </div>
 
     <hr>
