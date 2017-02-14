@@ -1,5 +1,5 @@
 server:
-  port: 7000
+  port: 8088
 spring:
   velocity:
     charset: UTF-8

@@ -91,4 +91,9 @@ public class UserController {
         return "redirect:/user/userList/1.vm";
     }
 
+    @RequestMapping(value = "/test",method = RequestMethod.GET)
+    public  String test(){
+        return "/front/index";
+    }
+
 }
