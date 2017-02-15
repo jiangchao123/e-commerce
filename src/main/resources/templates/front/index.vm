@@ -30,7 +30,7 @@
             <div class="navbar-inner">
                 <div class="container">
                     <ul class="nav">
-                        <li class="active"><a href="index.html">栏目1</a></li>
+                        <li class="active"><a href="/front/index">栏目1</a></li>
 
                         <li><a href="checkout.html">Ch <span class="badge badge-important">3</span></a></li>
                         <li><a href="/front/new">添加商品</a></li>

@@ -11,8 +11,8 @@
     <link href="../css/front/bootstrap-combined.min.css" rel="stylesheet">
     <script src="../js/front/jquery.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    <script src="js/front/app.js"></script>
-    <link href="css/front/style.css" rel="stylesheet">
+    <script src="../js/front/app.js"></script>
+    <link href="../css/front/style.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -30,13 +30,13 @@
             <div class="navbar-inner">
                 <div class="container">
                     <ul class="nav">
-                        <li class="active"><a href="front/index">Home</a></li>
-                        <li><a href="new.html">Order Placement</a></li>
-                        <li><a href="status.html">Order Status</a></li>
+                        <li class="active"><a href="/front/index">栏目1</a></li>
 
+                        <li><a href="checkout.html">Ch <span class="badge badge-important">3</span></a></li>
+                        <li><a href="/front/new">添加商品</a></li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                Categories
+                                类别
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
@@ -89,7 +89,7 @@
                         <div class="row-fluid">
                             <div class="span10">
                                 <div class="main-image">
-                                    <img src='http://placehold.it/550x400' />
+                                    <img src='../images/front/A.jpg' />
                                 </div>
                             </div>
                             <div class="span2 side-images">
