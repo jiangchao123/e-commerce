@@ -31,4 +31,9 @@ public class FrontController {
 
         return "/front/contactus";
     }
+
+    @RequestMapping(value = "/view",method = RequestMethod.GET)
+    public String view(){
+        return "/front/view";
+    }
 }
