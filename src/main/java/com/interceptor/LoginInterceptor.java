@@ -21,10 +21,10 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,Object handler)throws Exception{
-        Object obj = request.getSession().getAttribute("admin");
-        System.out.print("==========="+request.getSession().getAttribute("admin"));
+        Object obj = request.getSession().getAttribute("user");
+        System.out.print("==========="+request.getSession().getAttribute("user"));
         if(obj == null) {
-            response.sendRedirect(request.getContextPath() + "/login");
+            response.sendRedirect(request.getContextPath() + "/front/login");
             return false;
         }
         return true;
