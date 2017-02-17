@@ -36,4 +36,9 @@ public class FrontController {
     public String view(){
         return "/front/view";
     }
+
+    @RequestMapping(value = "/product_detail",method = RequestMethod.GET)
+    public String product_detail(){
+        return "/front/product_detail";
+    }
 }
