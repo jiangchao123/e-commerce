@@ -22,7 +22,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,Object handler)throws Exception{
         Object obj = request.getSession().getAttribute("user");
-        System.out.print("==========="+request.getSession().getAttribute("user"));
+        System.out.println("==========="+request.getSession().getAttribute("user"));
         if(obj == null) {
             response.sendRedirect(request.getContextPath() + "/front/login");
             return false;
@@ -38,8 +38,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response,
                            Object handler, ModelAndView modelAndView) throws Exception {
-        System.out.println("-------:" + request.getSession().getAttribute("admin"));
-        modelAndView.addObject("admin", request.getSession().getAttribute("admin"));
+        System.out.println("user!=null:" + request.getSession().getAttribute("user"));
+        Object obj = request.getSession().getAttribute("user");
+        modelAndView.addObject("user", request.getSession().getAttribute("user"));
     }
 
     /**

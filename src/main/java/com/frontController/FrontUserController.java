@@ -21,7 +21,7 @@ public class FrontUserController {
         FrontUserService frontUserService;
 
         @RequestMapping(value = "/login",method = RequestMethod.GET)
-        public String userLogin(){
+        public String userLogin(ModelMap modelMap){
             return "/front/login";
         }
 
@@ -29,8 +29,8 @@ public class FrontUserController {
         public String userLogin(UserDO userDO, ModelMap modelMap, HttpSession session){
             UserDO user= frontUserService.selectUserByUserName(userDO.getUsername());
             if(user !=null && userDO.getPassword().equals(user.getPassword())){
-                session.setAttribute("user",user);
-                modelMap.addAttribute("user",user);
+                session.setAttribute("user",userDO);
+                modelMap.addAttribute("user",userDO);
                 return "redirect:/front/index";
             }else
                 return "/front/login";

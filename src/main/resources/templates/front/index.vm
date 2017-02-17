@@ -40,7 +40,7 @@
                     <li><a href="#">My Account</a></li>
                     <li><a href="cart.html">Your Cart</a></li>
                     <li><a href="checkout.html">Checkout</a></li>
-                    <li><a href="./login">Login</a></li>
+                    <li><a href="#">Login</a></li>
                 </ul>
             </div>
         </div>
@@ -83,7 +83,7 @@
                 <li>
                     <img src="themes/images/carousel/banner-2.jpg" alt="" />
                     <div class="intro">
-                        <h1>Mid season sale</h1>
+                        <h1>$!user.username</h1>
                         <p><span>Up to 50% Off</span></p>
                         <p><span>On selected items online and in stores</span></p>
                     </div>
