@@ -38,7 +38,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response,
                            Object handler, ModelAndView modelAndView) throws Exception {
-        System.out.println("user!=null:" + request.getSession().getAttribute("admin"));
         Object obj = request.getSession().getAttribute("admin");
         modelAndView.addObject("admin", request.getSession().getAttribute("admin"));
     }
