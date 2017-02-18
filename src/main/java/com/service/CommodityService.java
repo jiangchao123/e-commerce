@@ -36,7 +36,7 @@ public class CommodityService {
         pager.setCount(commodityDOMapper.countByExample(commodityDOExample));
         commodityDOExample.setLimitStart(pager.getBegin());
         commodityDOExample.setLimitEnd(pager.getLength());
-        commodityDOExample.setOrderByClause("createtime DESC");
+        commodityDOExample.setOrderByClause("updatetime DESC");
         List<CommodityDO> commodityDOs = commodityDOMapper.selectByExample(commodityDOExample);
         List<CommodityVO> commodityVOs = new ArrayList<>();
         if (commodityDOs != null) {

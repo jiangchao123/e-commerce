@@ -86,6 +86,7 @@ public class CommodityController {
         }
         commodityDO.setShopId(5L);
         commodityDO.setCreatetime(new Date(System.currentTimeMillis()));
+        commodityDO.setUpdatetime(new Date(System.currentTimeMillis()));
         commodityDOMapper.insert(commodityDO);
         return "redirect:/commodity/commodityList/1.vm";
     }
