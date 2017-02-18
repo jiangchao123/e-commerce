@@ -36,7 +36,7 @@ public class CommodityController {
     public String view(@PathVariable("id") Long id, ModelMap modelMap) {
         CommodityDO commodity = commodityDOMapper.selectByPrimaryKey(id);
         modelMap.addAttribute("commodity", commodity);
-        return "/commodity/commodityInfo";
+        return "commodity/commodityInfo";
     }
 
     @RequestMapping("/commodityList/{page}")
@@ -45,7 +45,7 @@ public class CommodityController {
         List<CommodityVO> commoditys = commodityService.searchCommoditysByPage(pager);
         modelMap.addAttribute("commoditys", commoditys);
         modelMap.addAttribute("pager", pager);
-        return "/commodity/commodityList";
+        return "commodity/commodityList";
     }
 
     @RequestMapping("/edit/{id}")
@@ -54,14 +54,14 @@ public class CommodityController {
         modelMap.addAttribute("commodity", commodity);
         modelMap.addAttribute("operateEn", "edit/" + id);
         modelMap.addAttribute("operateCh", OperateEnum.UPDATE.code());
-        return "/commodity/add";
+        return "commodity/add";
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public String editCommodity(@Valid CommodityDO commodityDO, BindingResult bindingResult, ModelMap modelMap) {
         if(bindingResult.hasErrors()){
             modelMap.addAttribute("bindingResult",bindingResult);
-            return "/commodity/add";
+            return "commodity/add";
         }
         commodityDO.setUpdatetime(new Date(System.currentTimeMillis()));
         commodityDOMapper.updateByPrimaryKeySelective(commodityDO);
@@ -73,7 +73,7 @@ public class CommodityController {
         modelMap.addAttribute("commodity", new CommodityDO());
         modelMap.addAttribute("operateEn", "add");
         modelMap.addAttribute("operateCh", OperateEnum.ADD.code());
-        return "/commodity/add";
+        return "commodity/add";
     }
 
 
@@ -82,7 +82,7 @@ public class CommodityController {
     public String addCommodity(@Valid CommodityDO commodityDO, BindingResult bindingResult, ModelMap modelMap) {
         if(bindingResult.hasErrors()){
             modelMap.addAttribute("bindingResult",bindingResult);
-            return "/commodity/add";
+            return "commodity/add";
         }
         commodityDO.setShopId(5L);
         commodityDO.setCreatetime(new Date(System.currentTimeMillis()));

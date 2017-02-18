@@ -2,15 +2,11 @@ package com.controller;
 
 import com.entity.AdminDO;
 import com.service.AdminService;
-import com.service.UserService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
@@ -36,13 +32,13 @@ public class IndexController {
             session.setAttribute("admin",adminDO);//如果相同，放入model中
             return "redirect:/index";
         } else {
-            return "/login";
+            return "login";
         }
     }
 
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String adminLogin(ModelMap modelMap){
-        return "/login";
+        return "login";
     }
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)

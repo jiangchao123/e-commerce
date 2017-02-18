@@ -42,7 +42,7 @@ public class ShopController {
     public String view(@PathVariable("id") Long id, ModelMap modelMap) {
         ShopDO shop = shopDOMapper.selectByPrimaryKey(id);
         modelMap.addAttribute("shop", shop);
-        return "/shop/shopInfo";
+        return "shop/shopInfo";
     }
 
     @RequestMapping("/shopList/{page}")
@@ -51,7 +51,7 @@ public class ShopController {
         List<ShopVO> shops = shopService.searchShopsByPage(pager);
         modelMap.addAttribute("shops", shops);
         modelMap.addAttribute("pager", pager);
-        return "/shop/shopList";
+        return "shop/shopList";
     }
 
     @RequestMapping("/edit/{id}")
@@ -62,14 +62,14 @@ public class ShopController {
         modelMap.addAttribute("users", users);
         modelMap.addAttribute("operateEn", "edit/" + id);
         modelMap.addAttribute("operateCh", OperateEnum.UPDATE.code());
-        return "/shop/add";
+        return "shop/add";
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public String editShop(@Valid ShopDO shopDO, BindingResult bindingResult, ModelMap modelMap) {
         if(bindingResult.hasErrors()){
             modelMap.addAttribute("bindingResult",bindingResult);
-            return "/shop/add";
+            return "shop/add";
         }
         shopDO.setUpdatetime(new Date(System.currentTimeMillis()));
         shopDOMapper.updateByPrimaryKeySelective(shopDO);
@@ -83,14 +83,14 @@ public class ShopController {
         modelMap.addAttribute("operateEn", "add");
         modelMap.addAttribute("operateCh", OperateEnum.ADD.code());
         modelMap.addAttribute("users", users);
-        return "/shop/add";
+        return "shop/add";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addShop(@Valid ShopDO shopDO, BindingResult bindingResult, ModelMap modelMap) {
         if(bindingResult.hasErrors()){
             modelMap.addAttribute("bindingResult",bindingResult);
-            return "/shop/add";
+            return "shop/add";
         }
         shopDO.setCreatetime(new Date(System.currentTimeMillis()));
         shopDO.setStatus(ShopStatusEnum.NORMAL.code());

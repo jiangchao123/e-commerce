@@ -35,7 +35,7 @@ public class OrderController {
     public String view(@PathVariable("id") Long id, ModelMap modelMap) {
         OrderDO order = orderDOMapper.selectByPrimaryKey(id);
         modelMap.addAttribute("order", order);
-        return "/order/orderInfo";
+        return "order/orderInfo";
     }
 
     @RequestMapping("/orderList/{page}")
@@ -44,7 +44,7 @@ public class OrderController {
         List<OrderDO> orders = orderService.searchOrdersByPage(pager);
         modelMap.addAttribute("orders", orders);
         modelMap.addAttribute("pager", pager);
-        return "/order/orderList";
+        return "order/orderList";
     }
 
     @RequestMapping("/edit/{id}")
@@ -53,14 +53,14 @@ public class OrderController {
         modelMap.addAttribute("order", order);
         modelMap.addAttribute("operateEn", "edit/" + id);
         modelMap.addAttribute("operateCh", OperateEnum.UPDATE.code());
-        return "/order/add";
+        return "order/add";
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public String editOrder(@Valid OrderDO orderDO, BindingResult bindingResult, ModelMap modelMap) {
         if(bindingResult.hasErrors()){
             modelMap.addAttribute("bindingResult",bindingResult);
-            return "/order/add";
+            return "order/add";
         }
         orderDO.setUpdatetime(new Date(System.currentTimeMillis()));
         orderDOMapper.updateByPrimaryKeySelective(orderDO);
@@ -72,14 +72,14 @@ public class OrderController {
         modelMap.addAttribute("order", new OrderDO());
         modelMap.addAttribute("operateEn", "add");
         modelMap.addAttribute("operateCh", OperateEnum.ADD.code());
-        return "/order/add";
+        return "order/add";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addOrder(@Valid OrderDO orderDO, BindingResult bindingResult, ModelMap modelMap) {
         if(bindingResult.hasErrors()){
             modelMap.addAttribute("bindingResult",bindingResult);
-            return "/order/add";
+            return "order/add";
         }
         orderDO.setCreatetime(new Date(System.currentTimeMillis()));
         orderDOMapper.insert(orderDO);

@@ -6,7 +6,7 @@ spring:
     properties.input.encoding: UTF-8
     properties.output.encoding: UTF-8
     resourceLoaderPath: classpath:/templates/
-    prefix: /
+    prefix:
     # toolbox-config-location: /WEB-INF/toolbox.xml
   datasource:
     name: commerce

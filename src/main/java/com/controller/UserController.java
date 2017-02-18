@@ -14,13 +14,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by jiangchao08 on 16/12/5.
@@ -39,7 +36,7 @@ public class UserController {
     public String view(@PathVariable("id") Long id, ModelMap modelMap) {
         UserDO user = userDOMapper.selectByPrimaryKey(id);
         modelMap.addAttribute("user", user);
-        return "/user/userInfo";
+        return "user/userInfo";
     }
 
     @RequestMapping("/userList/{page}")
@@ -48,7 +45,7 @@ public class UserController {
         List<UserDO> users = userService.searchUsersByPage(pager);
         modelMap.addAttribute("users", users);
         modelMap.addAttribute("pager", pager);
-        return "/user/userList";
+        return "user/userList";
     }
 
     @RequestMapping("/edit/{id}")
@@ -57,14 +54,14 @@ public class UserController {
         modelMap.addAttribute("user", user);
         modelMap.addAttribute("operateEn", "edit/" + id);
         modelMap.addAttribute("operateCh", OperateEnum.UPDATE.code());
-        return "/user/add";
+        return "user/add";
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public String editUser(@Valid UserDO userDO, BindingResult bindingResult, ModelMap modelMap) {
         if(bindingResult.hasErrors()){
             modelMap.addAttribute("bindingResult",bindingResult);
-            return "/user/add";
+            return "user/add";
         }
         userDO.setUpdatetime(new Date(System.currentTimeMillis()));
         userDOMapper.updateByPrimaryKeySelective(userDO);
@@ -76,14 +73,14 @@ public class UserController {
         modelMap.addAttribute("user", new UserDO());
         modelMap.addAttribute("operateEn", "add");
         modelMap.addAttribute("operateCh", OperateEnum.ADD.code());
-        return "/user/add";
+        return "user/add";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addUser(@Valid UserDO userDO, BindingResult bindingResult, ModelMap modelMap) {
         if(bindingResult.hasErrors()){
             modelMap.addAttribute("bindingResult",bindingResult);
-            return "/user/add";
+            return "user/add";
         }
         userDO.setCreatetime(new Date(System.currentTimeMillis()));
         userDO.setStatus(UserStatusEnum.NORMAL.code());

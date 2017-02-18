@@ -1,5 +1,6 @@
 package com.plugin;
 
+import org.junit.Test;
 import org.mybatis.generator.api.CommentGenerator;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
@@ -17,9 +18,11 @@ import org.mybatis.generator.api.dom.xml.XmlElement;
 import java.util.List;
 
 /**
+ * 加入分页插件
  * Created by jiangchao08 on 17/2/6.
  */
 public class PaginationPlugin extends PluginAdapter {
+
     @Override
     public boolean modelExampleClassGenerated(TopLevelClass topLevelClass,
             IntrospectedTable introspectedTable) {
@@ -28,6 +31,7 @@ public class PaginationPlugin extends PluginAdapter {
         addLimit(topLevelClass, introspectedTable, "limitEnd");
         return super.modelExampleClassGenerated(topLevelClass, introspectedTable);
     }
+
     @Override
     public boolean sqlMapSelectByExampleWithoutBLOBsElementGenerated(
             XmlElement element, IntrospectedTable introspectedTable) {
@@ -63,6 +67,7 @@ public class PaginationPlugin extends PluginAdapter {
         commentGenerator.addGeneralMethodComment(method, introspectedTable);
         topLevelClass.addMethod(method);
     }
+
     /**
      * This plugin is always valid - no properties are required
      */
@@ -70,13 +75,19 @@ public class PaginationPlugin extends PluginAdapter {
         return true;
     }
 
+    /**
+     * 自动生成底层数据层、映射层和相应xml文件
+     */
+    @Test
     public static void generate() {
         String config = PaginationPlugin.class.getClassLoader().getResource(
                 "mybatisGeneratorConfig.xml").getFile();
         String[] arg = { "-configfile", config, "-overwrite" };
         ShellRunner.main(arg);
     }
-    public static void main(String[] args) {
-        generate();
-    }
+
+//    public static void main(String[] args) {
+//        generate();
+//    }
+
 }

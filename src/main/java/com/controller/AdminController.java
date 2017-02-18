@@ -34,7 +34,7 @@ public class AdminController {
     public String view(@PathVariable("id") Long id, ModelMap modelMap) {
         AdminDO admin = adminDOMapper.selectByPrimaryKey(id);
         modelMap.addAttribute("admin", admin);
-        return "/admin/adminInfo";
+        return "admin/adminInfo";
     }
 
 
@@ -44,7 +44,7 @@ public class AdminController {
         List<AdminDO> admins = adminService.searchAdminsByPage(pager);
         modelMap.addAttribute("admins", admins);
         modelMap.addAttribute("pager", pager);
-        return "/admin/adminList";
+        return "admin/adminList";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
@@ -52,14 +52,14 @@ public class AdminController {
         modelMap.addAttribute("admin", new AdminDO());
         modelMap.addAttribute("operateEn", "add");
         modelMap.addAttribute("operateCh", OperateEnum.ADD.code());
-        return "/admin/add";
+        return "admin/add";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addAdmin(@Valid AdminDO adminDO, BindingResult bindingResult, ModelMap modelMap) {
         if(bindingResult.hasErrors()){
             modelMap.addAttribute("bindingResult",bindingResult);
-            return "/admin/add";
+            return "admin/add";
         }
         adminDOMapper.insert(adminDO);
         return "redirect:/admin/adminList/1.vm";
