@@ -83,6 +83,7 @@ public class UserController {
             return "user/add";
         }
         userDO.setCreatetime(new Date(System.currentTimeMillis()));
+        userDO.setUpdatetime(new Date(System.currentTimeMillis()));
         userDO.setStatus(UserStatusEnum.NORMAL.code());
         userDOMapper.insert(userDO);
         return "redirect:/user/userList/1.vm";

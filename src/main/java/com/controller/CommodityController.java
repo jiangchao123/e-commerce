@@ -84,7 +84,7 @@ public class CommodityController {
             modelMap.addAttribute("bindingResult",bindingResult);
             return "commodity/add";
         }
-        commodityDO.setShopId(5L);
+        commodityDO.setShopId(2L);
         commodityDO.setCreatetime(new Date(System.currentTimeMillis()));
         commodityDO.setUpdatetime(new Date(System.currentTimeMillis()));
         commodityDOMapper.insert(commodityDO);
