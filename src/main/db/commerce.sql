@@ -133,6 +133,7 @@ CREATE TABLE `user` (
   `createtime` datetime NOT NULL,
   `updatetime` datetime DEFAULT NULL,
   `type` int(11) DEFAULT NULL,
+  `qq` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
